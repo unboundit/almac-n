@@ -11,6 +11,7 @@ use user AS user;
 if (isset($_POST['login_user'])) {
 	/*$_POST['pass'] = sha1($_POST['pass']);*/
 	$result = user::login($_POST['txtusuario'], $_POST['txtpass']);
+	//error_log($result);
 	if (!empty($result)) {
 		$_SESSION['user'] = $result[0]['username'];
 		error_log($_SESSION['user'] );
