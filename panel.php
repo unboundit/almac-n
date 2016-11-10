@@ -1,3 +1,11 @@
+<?php
+if(!isset($_SESSION['user'])){
+  echo $_SESSION['user'];
+  echo $_SESSION['salva'];
+  //header('Location: '.'index.html');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Adminstrador Almacen | </title>
+    <title><?= $user ?> | </title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -971,6 +979,7 @@
     <script src="js/bootstrap/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
+    <script src="js/scripts.js"></script>
     <script src="js/custom.js"></script>
 
     <!-- Flot -->

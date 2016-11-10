@@ -11,8 +11,8 @@ class user
 	#Registro de usuarios
 
 	*/
-	public static function register($mail, $pass, $r_type){
-		$consulta = 'call register_user("'.$mail.'", "'.$pass.'",  "'.$r_type.'")';
+	public static function register($mail, $pass, $rol){
+		$consulta = 'call register_user("'.$mail.'", "'.$pass.'",  "'.$rol.'")';
         error_log($consulta);
         $PDOMYSQL = new PDOMYSQL;
         $result =  $PDOMYSQL->consulta($consulta);
@@ -23,9 +23,9 @@ class user
         }
     }
 
-    public static function login($mail, $pass){
+    public static function login($user, $pass){
 
-		$consulta = 'SELECT user, pass, rol FROM ALMACEN.USUARIOS where user='.$mail.'" and pass = "'.$pass.'"';
+		$consulta = 'SELECT username, password, rol FROM ALMACEN.USUARIOS where username='.$user.'" and password = "'.$pass.'"';
 		error_log($consulta);
         $PDOMYSQL = new PDOMYSQL;
         $result =  $PDOMYSQL->consulta($consulta);

@@ -1,3 +1,8 @@
+<?php
+  require_once(__DIR__.'/classes/autoloader.php');
+  require_once(__DIR__.'/config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,13 +38,13 @@
             <form action="login.php" method="POST">
               <h1>Login</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username"  name="txtusuario" required="" />
+                <input type="text" class="form-control" placeholder="Username"  name="txtusuario" required="" id="txtuser"/>
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" name="txtpass"  required="" />
+                <input type="password" class="form-control" placeholder="Password" name="txtpass"  required="" id="txtpass" />
               </div>
               <div>
-                <button type="submit" class="btn btn-default submit" name="login_user" >Log in</button>
+                <button type="button" class="btn btn-default submit_login" >Log in</button>
                 <a class="reset_pass" href="#">olvidaste el password?</a>
               </div>
 
@@ -100,4 +105,13 @@
       </div>
     </div>
   </body>
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    login();
+  </script>
 </html>
