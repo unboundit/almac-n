@@ -35,7 +35,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="login.php" method="POST">
+            <form>
               <h1>Login</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username"  name="txtusuario" required="" id="txtuser"/>
@@ -106,7 +106,7 @@
     </div>
   </body>
   <!-- jQuery -->
-  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.js"></script>
   <!-- Bootstrap -->
   <script src="js/bootstrap/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>

@@ -14,6 +14,7 @@ function login(){
         console.log(data);
         //document.location.replace('panel.php');
       }else{
+        console.log(data);
         alert('problemas al iniciar session');
       }
     });
