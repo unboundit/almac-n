@@ -1,6 +1,5 @@
 <?php
-
-require_once('/autoloader.php');
+require_once('autoloader.php');
 require_once('../config.php');
 
 
@@ -13,7 +12,7 @@ if (isset($_POST['login_user'])) {
 	/*$_POST['pass'] = sha1($_POST['pass']);*/
 	$result = user::login($_POST['txtusuario'], $_POST['txtpass']);
 	if (!empty($result)) {
-		$_SESSION['user'] = $result[0]['user'];
+		$_SESSION['user'] = $result[0]['username'];
 		error_log($_SESSION['user'] );
 		$_SESSION['rol'] = $result[0]['rol'];
 		error_log($_SESSION['rol']);

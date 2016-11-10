@@ -1,8 +1,9 @@
 <?php
+require_once(__DIR__.'/classes/autoloader.php');
+require_once(__DIR__.'/config.php');
+
 if(!isset($_SESSION['user'])){
-  echo $_SESSION['user'];
-  echo $_SESSION['salva'];
-  //header('Location: '.'index.html');
+  header('Location: '.'index.php');
 }
 ?>
 
@@ -16,7 +17,7 @@ if(!isset($_SESSION['user'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $user ?> | </title>
+    <title><?= $_SESSION['user'] ?> | </title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
