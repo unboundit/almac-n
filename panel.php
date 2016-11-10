@@ -56,7 +56,7 @@ if(!isset($_SESSION['user'])){
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><?= $_SESSION['user'] ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -105,7 +105,7 @@ if(!isset($_SESSION['user'])){
                       <li><a href="#"></a></li>
                     </ul>-->
                   </li>
-                  <li><a href="articulos.html"><i class="fa fa-edit"></i> Artículos</a>
+                  <li><a href="articulos.php"><i class="fa fa-edit"></i> Artículos</a>
                   </li>
                   <li><a href="categorias.html"><i class="fa fa-desktop"></i> Categorías</a>
                   </li>
@@ -150,7 +150,7 @@ if(!isset($_SESSION['user'])){
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="img/img.jpg" alt="">John Doe
+                    <img src="img/img.jpg" alt=""><?= $_SESSION['user'] ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -260,7 +260,7 @@ if(!isset($_SESSION['user'])){
               <div class="count">4,567</div>
               <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
-<!--            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <!--<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
               <div class="count">2,315</div>
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
@@ -933,7 +933,7 @@ if(!isset($_SESSION['user'])){
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Control de Almacen - by <a href="https://unbound-it.com">Unbound-IT</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -978,13 +978,12 @@ if(!isset($_SESSION['user'])){
     <!-- bootstrap-daterangepicker -->
     <script src="js/moment/min/moment.min.js"></script>
     <script src="js/bootstrap/daterangepicker.js"></script>
-
     <!-- Custom Theme Scripts -->
     <script src="js/scripts.js"></script>
     <script src="js/custom.js"></script>
 
     <!-- Flot -->
-    <script>
+    <!--<script>
       $(document).ready(function() {
         var data1 = [
           [gd(2012, 1, 1), 17],
@@ -1056,11 +1055,11 @@ if(!isset($_SESSION['user'])){
           return new Date(year, month - 1, day).getTime();
         }
       });
-    </script>
+    </script>-->
     <!-- /Flot -->
 
     <!-- JQVMap -->
-    <script>
+    <!--<script>
       $(document).ready(function() {
         $('#world-map-gdp').vectorMap({
           map: 'world_en',
@@ -1075,11 +1074,11 @@ if(!isset($_SESSION['user'])){
           normalizeFunction: 'polynomial'
         });
       });
-    </script>
+    </script>-->
     <!-- /JQVMap -->
 
     <!-- Skycons -->
-    <script>
+    <!--<script>
       $(document).ready(function() {
         var icons = new Skycons({
             "color": "#73879C"
@@ -1096,11 +1095,11 @@ if(!isset($_SESSION['user'])){
 
         icons.play();
       });
-    </script>
+    </script>-->
     <!-- /Skycons -->
 
     <!-- Doughnut Chart -->
-    <script>
+    <!--<script>
       $(document).ready(function() {
         var options = {
           legend: false,
@@ -1139,11 +1138,11 @@ if(!isset($_SESSION['user'])){
           options: options
         });
       });
-    </script>
+    </script>-->
     <!-- /Doughnut Chart -->
 
     <!-- bootstrap-daterangepicker -->
-    <script>
+    <!--<script>
       $(document).ready(function() {
 
         var cb = function(start, end, label) {
@@ -1213,11 +1212,11 @@ if(!isset($_SESSION['user'])){
           $('#reportrange').data('daterangepicker').remove();
         });
       });
-    </script>
+    </script>-->
     <!-- /bootstrap-daterangepicker -->
 
     <!-- gauge.js -->
-    <script>
+    <!--<script>
       var opts = {
         lines: 12,
         angle: 0,
@@ -1240,7 +1239,7 @@ if(!isset($_SESSION['user'])){
       gauge.animationSpeed = 32;
       gauge.set(3200);
       gauge.setTextField(document.getElementById("gauge-text"));
-    </script>
+    </script>-->
     <!-- /gauge.js -->
   </body>
 
