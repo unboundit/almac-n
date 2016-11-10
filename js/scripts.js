@@ -11,8 +11,8 @@ function login(){
       type: 'post'
     }).done(function(data){
       if (data != 0) {
-        console.log(data);
-        //document.location.replace('panel.php');
+        //console.log(data);
+        document.location.replace('panel.php');
       }else{
         console.log(data);
         alert('problemas al iniciar session');

@@ -17,7 +17,7 @@ class user{
   }
 
   public static function login($user, $pass){
-		$consulta = 'SELECT username, password, rol FROM ALMACEN.USUARIOS where username='.$user.'" and password = "'.$pass.'"';
+		$consulta = 'SELECT * FROM ALMACEN.USUARIOS where username="'.$user.'" and password = "'.$pass.'"';
 		error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
