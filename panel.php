@@ -17,7 +17,7 @@ if(!isset($_SESSION['user'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $_SESSION['user'] ?> | </title>
+    <title><?= $_SESSION['user'] ?>  </title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -55,8 +55,8 @@ if(!isset($_SESSION['user'])){
                 <img src="img/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2><?= $_SESSION['user'] ?></h2>
+                <span>Bienvenido,</span>
+                <h2><?= $_SESSION['user'] ?> </h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
