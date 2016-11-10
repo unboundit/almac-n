@@ -20,7 +20,6 @@ if (isset($_POST['login_user'])) {
 		error_log($_SESSION['rol']);
 		echo json_encode($result);
 	}else{
-    $_SESSION['salva'] = "no hizo ni madre";
 		echo 0;
 	}
 }
