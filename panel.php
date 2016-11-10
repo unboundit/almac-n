@@ -44,7 +44,7 @@ if(!isset($_SESSION['user'])){
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-code"></i> <span>Almacen</span></a>
+              <a href="index.php" class="site_title"><i class="fa fa-code"></i> <span>Almacen</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -71,25 +71,25 @@ if(!isset($_SESSION['user'])){
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-bug"></i> Inventario Almacen <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="reporte_inventario.html">Reporte</a></li>
-                      <li><a href="existencias_almacen.html">Existencias</a></li>
-                      <li><a href="salidas_almacen.html">Salidas de Almacen</a></li>
+                      <li><a href="reporte_inventario.php">Reporte</a></li>
+                      <li><a href="existencias_almacen.php">Existencias</a></li>
+                      <li><a href="salidas_almacen.php">Salidas de Almacen</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bug"></i> Sucursales <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="reporte_inventario.html">Reporte Inventario</a></li>
-                      <li><a href="salidas_almacen.html">Reporte de Ventas</a></li>
+                      <li><a href="reporte_inventario.php">Reporte Inventario</a></li>
+                      <li><a href="salidas_almacen.php">Reporte de Ventas</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                      <li><a href="page_403.php">403 Error</a></li>
+                      <li><a href="page_404.php">404 Error</a></li>
+                      <li><a href="page_500.php">500 Error</a></li>
+                      <li><a href="plain_page.php">Plain Page</a></li>
+                      <li><a href="login.php">Login Page</a></li>
+                      <li><a href="pricing_tables.php">Pricing Tables</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -107,13 +107,13 @@ if(!isset($_SESSION['user'])){
                   </li>
                   <li><a href="articulos.php"><i class="fa fa-edit"></i> Artículos</a>
                   </li>
-                  <li><a href="categorias.html"><i class="fa fa-desktop"></i> Categorías</a>
+                  <li><a href="categorias.php"><i class="fa fa-desktop"></i> Categorías</a>
                   </li>
-                  <li><a href="paquetes.html"><i class="fa fa-table"></i> Paquetes</a>
+                  <li><a href="paquetes.php"><i class="fa fa-table"></i> Paquetes</a>
                   </li>
-                  <li><a href="sucursales.html"><i class="fa fa-bar-chart-o"></i> Sucursales</a>
+                  <li><a href="sucursales.php"><i class="fa fa-bar-chart-o"></i> Sucursales</a>
                   </li>
-                  <li><a href="usuarios.html"><i class="fa fa-bar-chart-o"></i> Usuarios</span></a>
+                  <li><a href="usuarios.php"><i class="fa fa-bar-chart-o"></i> Usuarios</span></a>
                   </li>
                 </ul>
               </div>
@@ -162,7 +162,7 @@ if(!isset($_SESSION['user'])){
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -1147,7 +1147,7 @@ if(!isset($_SESSION['user'])){
 
         var cb = function(start, end, label) {
           console.log(start.toISOString(), end.toISOString(), label);
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+          $('#reportrange span').php(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         };
 
         var optionSet1 = {
@@ -1188,7 +1188,7 @@ if(!isset($_SESSION['user'])){
             firstDay: 1
           }
         };
-        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+        $('#reportrange span').php(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
         $('#reportrange').daterangepicker(optionSet1, cb);
         $('#reportrange').on('show.daterangepicker', function() {
           console.log("show event fired");

@@ -9,7 +9,6 @@ if(!isset($_SESSION['user'])){
 
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -44,7 +43,7 @@ if(!isset($_SESSION['user'])){
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-code"></i> <span>Almacen</span></a>
+              <a href="index.php" class="site_title"><i class="fa fa-code"></i> <span>Almacen</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -71,25 +70,25 @@ if(!isset($_SESSION['user'])){
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-bug"></i> Inventario Almacen <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="reporte_inventario.html">Reporte</a></li>
-                      <li><a href="existencias_almacen.html">Existencias</a></li>
-                      <li><a href="salidas_almacen.html">Salidas de Almacen</a></li>
+                      <li><a href="reporte_inventario.php">Reporte</a></li>
+                      <li><a href="existencias_almacen.php">Existencias</a></li>
+                      <li><a href="salidas_almacen.php">Salidas de Almacen</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bug"></i> Sucursales <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="reporte_inventario.html">Reporte Inventario</a></li>
-                      <li><a href="salidas_almacen.html">Reporte de Ventas</a></li>
+                      <li><a href="reporte_inventario.php">Reporte Inventario</a></li>
+                      <li><a href="salidas_almacen.php">Reporte de Ventas</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                      <li><a href="page_403.php">403 Error</a></li>
+                      <li><a href="page_404.php">404 Error</a></li>
+                      <li><a href="page_500.php">500 Error</a></li>
+                      <li><a href="plain_page.php">Plain Page</a></li>
+                      <li><a href="login.php">Login Page</a></li>
+                      <li><a href="pricing_tables.php">Pricing Tables</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -98,22 +97,22 @@ if(!isset($_SESSION['user'])){
               <div class="menu_section">
                 <h3>Organización</h3>
                 <ul class="nav side-menu">
-                  <li><a href="panel.html"><i class="fa fa-home"></i> Reportes</a>
+                  <li><a href="panel.php"><i class="fa fa-home"></i> Reportes</a>
                     <!--<ul class="nav child_menu hidden">
                       <li><a href="#"></a></li>
                       <li><a href="#"></a></li>
                       <li><a href="#"></a></li>
                     </ul>-->
                   </li>
-                  <li><a href="articulos.html"><i class="fa fa-edit"></i> Artículos</a>
+                  <li><a href="articulos.php"><i class="fa fa-edit"></i> Artículos</a>
                   </li>
-                  <li><a href="categorias.html"><i class="fa fa-desktop"></i> Categorías</a>
+                  <li><a href="categorias.php"><i class="fa fa-desktop"></i> Categorías</a>
                   </li>
-                  <li><a href="paquetes.html"><i class="fa fa-table"></i> Paquetes</a>
+                  <li><a href="paquetes.php"><i class="fa fa-table"></i> Paquetes</a>
                   </li>
-                  <li><a href="sucursales.html"><i class="fa fa-bar-chart-o"></i> Sucursales</a>
+                  <li><a href="sucursales.php"><i class="fa fa-bar-chart-o"></i> Sucursales</a>
                   </li>
-                  <li><a href="usuarios.html"><i class="fa fa-bar-chart-o"></i> Usuarios</span></a>
+                  <li><a href="usuarios.php"><i class="fa fa-bar-chart-o"></i> Usuarios</span></a>
                   </li>
                 </ul>
               </div>
@@ -162,7 +161,7 @@ if(!isset($_SESSION['user'])){
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -247,7 +246,101 @@ if(!isset($_SESSION['user'])){
             <div class="z-col-lg-3 z-col-md-3 z-col-sm-4 z-col-xs-4 pull-right noMargin">
               <div class="z-block h100">
                 <div class="z-content z-contentMiddle">
-                  <button type="button" data-toggle="modal" data-target="#newArtModal" class="z-btn bgGreen cWhite s20">Agregar Artículo <span class="fa fa-plus text-bold"></span></button>
+                  <button type="button" data-toggle="modal" data-target="#newArtModal" class="btn btn-success cWhite s20 pull-right noMargin">Agregar Artículo <span class="fa fa-plus text-bold"></span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Catalogo de Artículos <small>Lista de posibles artículos en almacen.</small></h2>
+                  <ul class="nav navbar-right panel_toolbox hidden">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                      <thead>
+                        <tr class="headings">
+                          <th>
+                            <input type="checkbox" id="check-all" class="flat">
+                          </th>
+                          <th class="column-title">id </th>
+                          <th class="column-title">Nombre </th>
+                          <th class="column-title">Descripción </th>
+                          <th class="column-title">Presentación</th>
+                          <th class="column-title">Categoría</th>
+                          <th class="column-title">Materia Prima</th>
+                          <th class="column-title no-link last"><span class="nobr"></span>
+                          </th>
+                          <th class="bulk-actions" colspan="7">
+                            <a class="antoo" style="color:#fff; font-weight:500;">Acciones en Grupo ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            <div class="pull-right noMargin">
+                              <a role="button" class="cWhite"><span class="fa fa-trash s20"></span></a>
+                              &nbsp;
+                              <a role="button" class="cWhite"><span class="fa fa-edit s20"></span></a>
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr class="even pointer">
+                          <td class="a-center ">
+                            <input type="checkbox" class="flat" name="table_records">
+                          </td>
+                          <td class=" ">0</td>
+                          <td class=" ">Salsa de Tomate</td>
+                          <td class=" ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                          <td class=" ">Botella de 1Lt</td>
+                          <td class=" ">Abarrotes</td>
+                          <td class="text-center"><span class="fa fa-check"></span></td>
+                          <td class=" last">
+                            <div class="pull-right noMargin">
+                              <a role="button"><span class="fa fa-trash s20"></span></a>
+                              &nbsp;
+                              <a role="button"><span class="fa fa-edit s20"></span></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="odd pointer">
+                          <td class="a-center ">
+                            <input type="checkbox" class="flat" name="table_records">
+                          </td>
+                          <td class=" ">0</td>
+                          <td class=" ">Vasito de catsup</td>
+                          <td class=" ">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                          <td class=" ">Vasito de 10ml</td>
+                          <td class=" ">Consumibles en Sucursal</td>
+                          <td class="text-center"><span class="fa fa-times"></span></td>
+                          <td class=" last">
+                            <div class="pull-right noMargin">
+                              <a role="button"><span class="fa fa-trash s20"></span></a>
+                              &nbsp;
+                              <a role="button"><span class="fa fa-edit s20"></span></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- etcetera -->
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -267,53 +360,53 @@ if(!isset($_SESSION['user'])){
               <div class="modal-body">
                 <div class="form-horizontal form-label-left">
                   <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_articulo">Nombre Artículo <span class="required">*</span>
+                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="nombre_articulo">Nombre Artículo <span class="required">*</span>
                     </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <input type="text" id="nombre_articulo" name="nombre_articulo" required="required" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion_articulo">Descripción <span class="required">*</span>
+                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="descripcion_articulo">Descripción <span class="required">*</span>
                     </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <textarea id="descripcion_articulo" name="descripcion_articulo" required="required" class="form-control col-md-7 col-xs-12" rows="8" cols="40"></textarea>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="unidades_articulo" class="control-label col-md-3 col-sm-3 col-xs-12">Unidades</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="unidades_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Unidades</label>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <input id="unidades_articulo" name="unidades_articulo" class="form-control col-md-7 col-xs-12" type="text">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="escala_articulo" class="control-label col-md-3 col-sm-3 col-xs-12">Escala</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="escala_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Escala</label>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <input id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12" type="text">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="tamaño_articulo" class="control-label col-md-3 col-sm-3 col-xs-12">Tamaño</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="tamaño_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Tamaño</label>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <input id="tamaño_articulo" name="tamaño_articulo" class="form-control col-md-7 col-xs-12" type="text">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="categoria_articulo" class="control-label col-md-3 col-sm-3 col-xs-12">Categoria</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <select id="categoria_articulo" name="categoria_articulo" class="form-control col-md-7 col-xs-12">
-                        <option value="volvo">seleccionar</option>
-                        <option value="saab">de las categorias</option>
-                        <option value="mercedes">que sacamos</option>
-                        <option value="audi">de la hoja</option>
+                        <option value="">seleccionar</option>
+                        <option value="">de las categorias</option>
+                        <option value="">que sacamos</option>
+                        <option value="">de la hoja</option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">¿Materia Prima o conformada?</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">¿Materia Prima o conformada?</label>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <div id="tipo_articulo" class="btn-group" data-toggle="buttons">
-                        <label class="">
+                        <label>
                           <input type="radio" name="tipo_articulo" value="0"> &nbsp; Prima &nbsp;
                         </label>
                         <label>
