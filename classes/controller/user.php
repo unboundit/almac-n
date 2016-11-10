@@ -4,8 +4,9 @@ use pdomysql AS pdomysql;
 use user AS user;
 
 class user{
-	public static function register($mail, $pass, $rol){
-		$consulta = 'call register_user("'.$mail.'", "'.$pass.'",  "'.$rol.'")';
+	public static function register($user, $pass, $rol){
+		//$consulta = 'call register_user("'.$mail.'", "'.$pass.'",  "'.$rol.'")';
+    $consulta = 'INSERT INTO almacen.usuarios (username, password, rol) VALUES ("'.$user.'", "'.$pass.'", 0)';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
