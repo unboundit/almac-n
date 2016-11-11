@@ -19,6 +19,7 @@ class almacen{
     $result =  $PDOMYSQL->consulta($consulta);
    	return $result;
   }
+
   public static function upSalidaAlmacen($id_paquete, $id_sucursal){
     $consulta = 'INSERT INTO almacen.salidaalmacen (fecha) VALUES (CURDATE())';
     error_log($consulta);
@@ -30,26 +31,27 @@ class almacen{
     return $result;
 
   }
-private static function MaxSalidaAlmacen(){
-    $consulta = 'select MAX(idSalidaAlmacen) from almacen.salidaalmacen';
-    error_log($consulta);
-    $PDOMYSQL = new PDOMYSQL;
-    $result =  $PDOMYSQL->consulta($consulta);
 
-    return $result;
-  }
-private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen, $id_sucursal){
-  $consulta = 'INSERT INTO almacen.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
-
-    error_log($consulta);
-
+  private static function MaxSalidaAlmacen(){
+      $consulta = 'select MAX(idSalidaAlmacen) from almacen.salidaalmacen';
+      error_log($consulta);
       $PDOMYSQL = new PDOMYSQL;
       $result =  $PDOMYSQL->consulta($consulta);
 
-}
+      return $result;
+    }
+
+  private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen, $id_sucursal){
+    $consulta = 'INSERT INTO almacen.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
+
+      error_log($consulta);
+
+        $PDOMYSQL = new PDOMYSQL;
+        $result =  $PDOMYSQL->consulta($consulta);
+
+  }
 
   public static function paquete($descripcion, $id_Articulo, $cantidad){
-
 		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ("'.$descripcion.'")';
 		//error_log(print_r($consulta, true));
     $check = 'SELECT id_paquetes FROM almacen.paquetes WHERE descripcion = "'.$descripcion.'"';
@@ -75,7 +77,6 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
 
    	return $result;
   }
-
 
   public static function insertArticuloHasPaquete($id_articulo, $id_paquete, $cantidad){
   	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquete.'","'.$cantidad .'" )';

@@ -11,13 +11,100 @@ if(!isset($_SESSION['user'])){
 
   <div id="existencias" class="right_col" role="main">
     <div class="row">
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-right noMargin">
-        
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right noMargin">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Catalogo de Artículos <small>Lista de posibles artículos en almacen.</small></h2>
+            <h2>Calendario <small>Mostrará la fecha actual</small></h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="calendar z-block h200">
+              <div class="z-content z-contentMiddle">
+                <div class="calendar-table z-block centered">
+                  <table class="table-condensed">
+                    <thead>
+                      <tr>
+                        <th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th>
+                        <th colspan="5" class="month">Oct 2016</th>
+                        <th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th>
+                      </tr>
+                      <tr>
+                        <th>Su</th>
+                        <th>Mo</th>
+                        <th>Tu</th>
+                        <th>We</th>
+                        <th>Th</th>
+                        <th>Fr</th>
+                        <th>Sa</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="weekend off available" data-title="r0c0">25</td>
+                        <td class="off available" data-title="r0c1">26</td>
+                        <td class="off available" data-title="r0c2">27</td>
+                        <td class="off available" data-title="r0c3">28</td>
+                        <td class="off available" data-title="r0c4">29</td>
+                        <td class="off available" data-title="r0c5">30</td>
+                        <td class="weekend available" data-title="r0c6">1</td>
+                      </tr>
+                      <tr>
+                        <td class="weekend available" data-title="r1c0">2</td>
+                        <td class="available" data-title="r1c1">3</td>
+                        <td class="available" data-title="r1c2">4</td>
+                        <td class="available" data-title="r1c3">5</td>
+                        <td class="available" data-title="r1c4">6</td>
+                        <td class="available" data-title="r1c5">7</td>
+                        <td class="weekend available" data-title="r1c6">8</td>
+                      </tr>
+                      <tr>
+                        <td class="weekend available" data-title="r2c0">9</td>
+                        <td class="available" data-title="r2c1">10</td>
+                        <td class="available" data-title="r2c2">11</td>
+                        <td class="available" data-title="r2c3">12</td>
+                        <td class="available" data-title="r2c4">13</td>
+                        <td class="available" data-title="r2c5">14</td>
+                        <td class="weekend available" data-title="r2c6">15</td>
+                      </tr>
+                      <tr>
+                        <td class="weekend available" data-title="r3c0">16</td>
+                        <td class="available" data-title="r3c1">17</td>
+                        <td class="today active start-date active end-date available" data-title="r3c2">18</td>
+                        <td class="available" data-title="r3c3">19</td>
+                        <td class="available" data-title="r3c4">20</td>
+                        <td class="available" data-title="r3c5">21</td>
+                        <td class="weekend available" data-title="r3c6">22</td>
+                      </tr>
+                      <tr>
+                        <td class="weekend available" data-title="r4c0">23</td>
+                        <td class="available" data-title="r4c1">24</td>
+                        <td class="available" data-title="r4c2">25</td>
+                        <td class="available" data-title="r4c3">26</td>
+                        <td class="available" data-title="r4c4">27</td>
+                        <td class="available" data-title="r4c5">28</td>
+                        <td class="weekend available" data-title="r4c6">29</td>
+                      </tr>
+                      <tr>
+                        <td class="weekend available" data-title="r5c0">30</td>
+                        <td class="available" data-title="r5c1">31</td>
+                        <td class="off available" data-title="r5c2">1</td>
+                        <td class="off available" data-title="r5c3">2</td>
+                        <td class="off available" data-title="r5c4">3</td>
+                        <td class="off available" data-title="r5c5">4</td>
+                        <td class="weekend off available" data-title="r5c6">5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <form class="x_panel">
+          <div class="x_title">
+            <h2>Artículos <!--<small>Lista de posibles artículos en almacen.</small>--></h2>
             <ul class="nav navbar-right panel_toolbox hidden">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -37,49 +124,26 @@ if(!isset($_SESSION['user'])){
           </div>
           <div class="x_content">
             <div class="table-responsive">
-              <table class="table table-striped jambo_table bulk_action">
+              <table class="table table-striped jambo_table">
                 <thead>
                   <tr class="headings">
-                    <th>
-                      <input type="checkbox" id="check-all" class="flat">
-                    </th>
-                    <th class="column-title">id </th>
-                    <th class="column-title">Nombre </th>
+                    <th class="column-title">Artículo </th>
                     <th class="column-title">Descripción </th>
-                    <th class="column-title">Presentación</th>
-                    <th class="column-title">Categoría</th>
-                    <th class="column-title">Materia Prima</th>
-                    <th class="column-title no-link last"><span class="nobr"></span>
-                    </th>
-                    <th class="bulk-actions" colspan="7">
-                      <a class="antoo" style="color:#fff; font-weight:500;">Acciones en Grupo ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                      <div class="pull-right noMargin">
-                        <a role="button" class="cWhite"><span class="fa fa-trash s20"></span></a>
-                        &nbsp;
-                        <a role="button" class="cWhite"><span class="fa fa-edit s20"></span></a>
-                      </div>
-                    </th>
+                    <th class="column-title">Cantidad Actual </th>
+                    <th class="column-title last">Agregar </th>
                   </tr>
                 </thead>
-
                 <tbody>
                   <?php $articulos = almacen::getArticulos();
                   foreach ($articulos as $key => $value) { ?>
                     <tr class="even pointer">
-                      <td class="a-center ">
-                        <input type="checkbox" class="flat" name="table_records">
-                      </td>
-                      <td class=" "><?= $articulos[$key]['id_articulo'] ?></td>
                       <td class=" "><?= $articulos[$key]['nombre'] ?></td>
                       <td class=" "><?= $articulos[$key]['descripcion'] ?></td>
-                      <td class=" "><?= $articulos[$key]['unidades'] ?><?= $articulos[$key]['escala'] ?>. <?= $articulos[$key]['tamaño'] ?></td>
-                      <td class=" "><?= $articulos[$key]['Categoria'] ?></td>
-                      <td class="text-center"><span class="fa fa-check"></span></td>
+                      <td class=" ">$cantidad de ayer</td>
                       <td class=" last">
-                        <div class="pull-right noMargin">
-                          <a role="button"><span class="fa fa-trash s20"></span></a>
-                          &nbsp;
-                          <a role="button"><span class="fa fa-edit s20"></span></a>
+                        <div class="form-group">
+                          <input type="number" id="cantidad_existencia_<?= $articulos[$key]['id_articulo'] ?>" name="cantidad_existencia_<?= $articulos[$key]['id_articulo'] ?>" required="required" class="form-control mw150">
+                          <input type="hidden" id="idarticulo_existencia_<?= $articulos[$key]['id_articulo'] ?>" name="idarticulo_existencia_<?= $articulos[$key]['id_articulo'] ?>" value="<?= $articulos[$key]['id_articulo'] ?>">
                         </div>
                       </td>
                     </tr>
@@ -88,89 +152,14 @@ if(!isset($_SESSION['user'])){
               </table>
             </div>
           </div>
-        </div>
+          <div class="x-footer text-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="saveExistencias" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
       </div>
     </div>
   </div>
 
 <?php include __DIR__.'/footer.php'; ?>
-
-<!-- modals -->
-  <div class="modal fade" id="newArtModal" tabindex="-1" role="dialog" aria-labelledby="newArtLabel">
-    <div class="modal-dialog" role="document">
-      <form id="newArtForm" class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="newArtLabel">Agregar un artículo al catálogo</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-horizontal form-label-left">
-            <div class="form-group">
-              <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="nombre_articulo">Nombre Artículo <span class="required">*</span>
-              </label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <input type="text" id="nombre_articulo" name="nombre_articulo" required="required" class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="descripcion_articulo">Descripción <span class="required">*</span>
-              </label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <textarea id="descripcion_articulo" name="descripcion_articulo" required="required" class="form-control col-md-7 col-xs-12" rows="8" cols="40"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="unidades_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Unidades</label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <input id="unidades_articulo" name="unidades_articulo" class="form-control col-md-7 col-xs-12" type="text">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="escala_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Escala</label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <input id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12" type="text">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="tamaño_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Tamaño</label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <input id="tamaño_articulo" name="tamaño_articulo" class="form-control col-md-7 col-xs-12" type="text">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <select id="categoria_articulo" name="categoria_articulo" class="form-control col-md-7 col-xs-12">
-                  <option value="">_</option>
-                  <?php $categorias = almacen::getCategorias();
-                  foreach ($categorias as $key => $value) { ?>
-                    <option value="<?= $categorias[$key]['id_categorias'] ?>"><?= $categorias[$key]['nombre'] ?></option>
-                  <?php } ?>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">¿Materia Prima o conformada?</label>
-              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <div id="tipo_articulo" class="btn-group" data-toggle="buttons">
-                  <label>
-                    <input type="radio" name="tipo_articulo" value="0"> &nbsp; Prima &nbsp;
-                  </label>
-                  <label>
-                    <input type="radio" name="tipo_articulo" value="1"> Conformada
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="ln_solid"></div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" id="saveNewArticle" class="btn btn-primary">Save changes</button>
-        </div>
-      </form><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  <!-- modals -->
