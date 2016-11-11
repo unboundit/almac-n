@@ -9,23 +9,12 @@ if(!isset($_SESSION['user'])){
 
 <?php include __DIR__.'/header.php'; ?>
 
-  <div id="articulos" class="right_col" role="main">
-    <div class="row tile_count">
-      <div class="z-col-lg-3 col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-user"></i> Artículos Totales</span>
-        <div class="count">2500</div>
-        <!--<span class="count_bottom"><i class="green">4% </i> From last Week</span>-->
-      </div>
-      <div class="z-col-lg-3 z-col-md-3 z-col-sm-4 z-col-xs-6 pull-right noMargin">
-        <div class="z-block h100">
-          <div class="z-content z-contentMiddle">
-            <button type="button" data-toggle="modal" data-target="#newArtModal" class="btn btn-success cWhite s20 pull-right noMargin">Agregar Artículo <span class="fa fa-plus text-bold"></span></button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="existencias" class="right_col" role="main">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-right noMargin">
+        
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
             <h2>Catalogo de Artículos <small>Lista de posibles artículos en almacen.</small></h2>
@@ -101,6 +90,7 @@ if(!isset($_SESSION['user'])){
           </div>
         </div>
       </div>
+      </div>
     </div>
   </div>
 
@@ -152,6 +142,7 @@ if(!isset($_SESSION['user'])){
               <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <select id="categoria_articulo" name="categoria_articulo" class="form-control col-md-7 col-xs-12">
+                  <option value="">_</option>
                   <?php $categorias = almacen::getCategorias();
                   foreach ($categorias as $key => $value) { ?>
                     <option value="<?= $categorias[$key]['id_categorias'] ?>"><?= $categorias[$key]['nombre'] ?></option>
