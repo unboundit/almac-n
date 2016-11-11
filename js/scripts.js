@@ -104,7 +104,7 @@ $(document).ready(function(){
   if($('#paquetes').length!=0){
     saveNewPaquete();
   }
-  if("#nuevo_usuario").length!=0){
+  if($("#nuevo_usuario").length!=0){
     // initialize the validator function
     validator.message.date = 'not a real date';
     // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
