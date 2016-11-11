@@ -64,5 +64,30 @@ class user{
     $result =  $PDOMYSQL->consulta($consulta);
    	return $result;
   }
+  public static function upArticuloSegura($nombre, $descripcion, $unidades, $escala, $tamano, $articuloscol, $cat_id_cat){
+	$areglo=array(
+					1=>$nombre,
+					2=>$descripcion,
+					3=>$unidades,
+					4=>$escala,
+					5=>$tamano,
+					6=>$articuloscol,
+					7=>$cat_id_cat
+				);
+	  $consulta = ' INSERT INTO almacen.articulos '.
+		'(nombre, '.
+		'descripcion, '.
+		'unidades, '.
+		'escala, '.
+		'tamaño, '.
+		'articuloscol, '.
+		'categorias_id_categorias) '.
+	   'VALUES '.
+		'(?,?,?,?,?,?,?		)';
+		error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consultaSegura($consulta,$areglo);
+   	return $result;  
+  }
 }
 ?>
