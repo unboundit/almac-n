@@ -17,6 +17,7 @@ if (isset($_POST['new_articulo'])) {
 }
 
 if (isset($_POST['new_paquete'])) {
+  //error_log(print_r($_POST, true));
   $result =almacen::paquete($_POST['descripcion_paquete'], $_POST['articulo_paquete'], $_POST['cantidad_paquete']);
 	error_log(json_encode($result));
 	if (!empty($result)) {

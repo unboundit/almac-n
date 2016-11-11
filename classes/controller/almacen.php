@@ -49,20 +49,22 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
 }
 
   public static function paquete($descripcion, $id_Articulo, $cantidad){
-		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ('.$descripcion.')';
-		error_log($consulta."        que tiene la variable consulta");
-    $check = 'SELECT id_paquete FROM almacen.paquete WHERE descripcion = '.$descripcion;
-    error_log($check);
+
+		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ("'.$descripcion.'")';
+		//error_log(print_r($consulta, true));
+    $check = 'SELECT id_paquetes FROM almacen.paquetes WHERE descripcion = "'.$descripcion.'"';
+    //error_log($consulta);
   	$PDOMYSQL = new PDOMYSQL;
     $insert = $PDOMYSQL->consulta($consulta);
-  	$id_paquete = $PDOMYSQL->consulta($check);
-  	//$id_Paquete = MaxPaquete();
-		error_log(json_encode($id_paquete));
-		$result2 = almacen::insertArticuloHasPaquete($id_Articulo, $id_paquete, $cantidad);
-
-		//error_log($id_paquete);
-
-   	return $result2;
+  	$result = $PDOMYSQL->consulta($check);
+    $id_paquete = $result[0]['id_paquetes'];
+	  //error_log(print_r($id_paquete, true));
+    if($id_paquete){
+  		$result2 = almacen::insertArticuloHasPaquete($id_Articulo, $id_paquete, $cantidad);
+      error_log(print_r($result2, true));
+    } else {
+      return 0;
+    }
   }
 
   private static function MaxPaquete(){
@@ -74,9 +76,9 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
    	return $result;
   }
 
-  public static function insertArticuloHasPaquete($id_articulo, $id_paquetes, $cantidad){
-  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ('.$id_articulo.','.$id_paquetes.','.$cantidad .' )';
 
+  public static function insertArticuloHasPaquete($id_articulo, $id_paquete, $cantidad){
+  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquete.'","'.$cantidad .'" )';
 		error_log($consulta);
 
     	$PDOMYSQL = new PDOMYSQL;
