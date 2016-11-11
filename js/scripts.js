@@ -68,3 +68,49 @@ function saveNewArticle(){
     });
   })
 }
+
+
+$(document).ready(function(){
+  if($('#login').length!=0){
+    login();
+  }
+  if($('#articulos').length!=0){
+    saveNewArticle();
+  }
+  if("#nuevo_usuario").length!=0){
+    // initialize the validator function
+    validator.message.date = 'not a real date';
+    // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+    $('form')
+      .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+      .on('change', 'select.required', validator.checkField)
+      .on('keypress', 'input[required][pattern]', validator.keypress);
+
+    $('.multi.required').on('keyup blur', 'input', function() {
+      validator.checkField.apply($(this).siblings().last()[0]);
+    });
+
+    $('#addNewUser').click(function(e) {
+      e.preventDefault();
+      var submit=true;
+      // evaluate the form using generic validaing
+      if (!validator.checkAll($(this).closest('form'))) {
+        submit = false;
+      }
+      if (submit){
+        newUser();
+      }
+    });
+  }
+  if($('#salida_almacen').length!=0){
+    $('#wizard').smartWizard();
+
+    $('#wizard_verticle').smartWizard({
+      transitionEffect: 'slide'
+    });
+
+    $('.buttonNext').addClass('btn btn-success');
+    $('.buttonPrevious').addClass('btn btn-primary');
+    $('.buttonFinish').addClass('btn btn-default');
+  }
+})

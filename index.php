@@ -31,7 +31,7 @@
     <link href="css/custom.css" rel="stylesheet">
   </head>
 
-  <body class="login">
+  <body id="login" class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -115,7 +115,4 @@
   <script src="js/bootstrap/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/scripts.js"></script>
-  <script>
-    login();
-  </script>
 </html>
