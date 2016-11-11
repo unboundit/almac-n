@@ -42,6 +42,38 @@ class user{
    	return $result;
   }
 
+    public static function paquete($descripcion, $id_Articulo, $cantidad){
+		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ('.$descripcion.')';
+		error_log($consulta);
+
+    	$PDOMYSQL = new PDOMYSQL;
+    	$result =  $PDOMYSQL->consulta($consulta);
+    	$id_Paquete = MaxPaquete();
+		error_log($id_Paquete);
+		$result2 = insertArticuloHasPaquete($id_Articulo, $id_Paquete, $cantidad);
+
+		error_log($id_Paquete);
+
+   	return $result;
+  }
+  public static function MaxPaquete(){
+  	$consulta = 'select MAX(id_paquetes) from almacen.paquetes';
+		error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+
+   	return $result;
+  }
+  public static function insertArticuloHasPaquete($id_articulo, $id_paquetes, $cantidad){
+  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo,paquetes_id_paquetes,cantidad) VALUES .
+  	 ('$id_articulo','.$id_paquetes,','.$cantidad .' )';
+
+		error_log($consulta);
+
+    	$PDOMYSQL = new PDOMYSQL;
+    	$result =  $PDOMYSQL->consulta($consulta);
+  }
+
   public static function upArticulo($nombre, $descripcion, $unidades, $escala, $tamano, $articuloscol, $cat_id_cat){
 	  $consulta = ' INSERT INTO almacen.articulos '.
 		'(id_articulo, '.
