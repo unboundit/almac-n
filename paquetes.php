@@ -113,7 +113,7 @@ if(!isset($_SESSION['user'])){
                   <option value="">_</option>
                   <?php $articulos = almacen::getArticulos();
                   foreach ($articulos as $key => $value) { ?>
-                    <option value="<?= $articulos[$key]['id_articulos'] ?>"><?= $articulos[$key]['nombre'] ?></option>
+                    <option value="<?= $articulos[$key]['id_articulo'] ?>"><?= $articulos[$key]['nombre'] ?></option>
                   <?php } ?>
                 </select>
               </div>
