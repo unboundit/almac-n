@@ -20,6 +20,17 @@ class almacen{
    	return $result;
   }
 
+  public static function getPaquetes(){
+    $consulta = 'SELECT A.id_paquetes, A.descripcion, C.nombre, B.cantidad FROM almacen.paquetes as A
+    INNER JOIN almacen.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
+    inner JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+    return $result;
+
+  }
+
   public static function upSalidaAlmacen($id_paquete, $id_sucursal){
     $consulta = 'INSERT INTO almacen.salidaalmacen (fecha) VALUES (CURDATE())';
     error_log($consulta);

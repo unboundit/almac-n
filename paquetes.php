@@ -71,6 +71,26 @@ if(!isset($_SESSION['user'])){
                 </thead>
 
                 <tbody>
+                  <?php $articulos = almacen::getPaquetes();
+                  foreach ($articulos as $key => $value) { ?>
+                    <tr class="even pointer">
+                      <td class="a-center ">
+                        <input type="checkbox" class="flat" name="table_records">
+                      </td>
+                      <td class=" "><?= $articulos[$key]['id_paquetes'] ?></td>
+                      <td class=" "><?= $articulos[$key]['descripcion'] ?></td>
+                      <td class=" "><?= $articulos[$key]['nombre'] ?></td>
+                      <td class=" "><?= $articulos[$key]['cantidad'] ?></td>
+                      <td class="text-center"><span class="fa fa-check"></span></td>
+                      <td class=" last">
+                        <div class="pull-right noMargin">
+                          <a role="button"><span class="fa fa-trash s20"></span></a>
+                          &nbsp;
+                          <a role="button"><span class="fa fa-edit s20"></span></a>
+                        </div>
+                      </td>
+                    </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
