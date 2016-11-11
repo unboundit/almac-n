@@ -26,4 +26,9 @@ class user{
    	return $result;
   }
 }
+  public static function logout(){
+
+  session_destroy();
+
+  }
 ?>
