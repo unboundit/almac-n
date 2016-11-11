@@ -12,11 +12,14 @@
   <div id="panel" class="right_col" role="main">
     <!-- top tiles -->
     <div class="row tile_count">
+    <?php $articulos = almacen::getSumArticulos();
+     foreach ($articulos as $key => $value) { ?>
       <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-        <div class="count">2500</div>
+        <span class="count_top"><i class="fa fa-user"></i> Artículos <?= $articulos[$key]['nombre'] ?></span>
+        <div class="count"><?= $articulos[$key]['suma'] ?></div>
         <span class="count_bottom"><i class="green">4% </i> From last Week</span>
       </div>
+      <?php } ?>
       <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count">
         <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
         <div class="count">123.50</div>

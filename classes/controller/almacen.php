@@ -5,11 +5,21 @@ use almacen AS almacen;
 
 class almacen{
   public static function getArticulos(){
-		$consulta = 'select a.id_articulo,a.nombre,a.descripcion,a.unidades,a.escala,a.tamaño, b.nombre as Categoria from almacen.articulos as a inner join almacen.categorias b on b.id_categorias = a.categorias_id_categorias';
+		$consulta = 'SELECT a.id_articulo,a.nombre,a.descripcion,a.unidades,a.escala,a.tamaño, b.nombre as Categoria from almacen.articulos as a inner join almacen.categorias b on b.id_categorias = a.categorias_id_categorias WHERE a.id_articulo ORDER BY a.id_articulo ASC';
 		error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
    	return $result;
+  }
+  public static function getSumArticulos(){
+    $consulta = 'SELECT B.id_categorias, SUM(A.unidades) AS suma, B.nombre from almacen.articulos AS A
+INNER JOIN almacen.categorias B on A.categorias_id_categorias = B.id_categorias
+where B.id_categorias group BY  B.id_categorias ASC';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+    return $result;
+
   }
 
   public static function getCategorias(){
@@ -22,7 +32,8 @@ class almacen{
   public static function getPaquetes(){
     $consulta = 'SELECT A.id_paquetes, A.descripcion, C.nombre, B.cantidad FROM almacen.paquetes as A
 INNER JOIN almacen.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
-inner JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo';
+inner JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo
+WHERE A.id_paquetes ORDER BY A.id_paquetes ASC';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
