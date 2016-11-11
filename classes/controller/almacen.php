@@ -57,9 +57,10 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
     $insert = $PDOMYSQL->consulta($consulta);
   	$result = $PDOMYSQL->consulta($check);
     $id_paquete = $result[0]['id_paquetes'];
-	//	error_log(print_r($id_paquete, true));
+	  //error_log(print_r($id_paquete, true));
     if($id_paquete){
   		$result2 = almacen::insertArticuloHasPaquete($id_Articulo, $id_paquete, $cantidad);
+      error_log(print_r($result2, true));
     } else {
       return 0;
     }
@@ -74,8 +75,8 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
    	return $result;
   }
 
-  public static function insertArticuloHasPaquete($id_articulo, $id_paquetes, $cantidad){
-  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquetes.'","'.$cantidad .'" )';
+  public static function insertArticuloHasPaquete($id_articulo, $id_paquete, $cantidad){
+  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquete.'","'.$cantidad .'" )';
 
 		error_log($consulta);
 
