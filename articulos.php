@@ -252,7 +252,7 @@ if(!isset($_SESSION['user'])){
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
                   <h2>Catalogo de Artículos <small>Lista de posibles artículos en almacen.</small></h2>
@@ -301,43 +301,27 @@ if(!isset($_SESSION['user'])){
                       </thead>
 
                       <tbody>
-                        <tr class="even pointer">
-                          <td class="a-center ">
-                            <input type="checkbox" class="flat" name="table_records">
-                          </td>
-                          <td class=" ">0</td>
-                          <td class=" ">Salsa de Tomate</td>
-                          <td class=" ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                          <td class=" ">Botella de 1Lt</td>
-                          <td class=" ">Abarrotes</td>
-                          <td class="text-center"><span class="fa fa-check"></span></td>
-                          <td class=" last">
-                            <div class="pull-right noMargin">
-                              <a role="button"><span class="fa fa-trash s20"></span></a>
-                              &nbsp;
-                              <a role="button"><span class="fa fa-edit s20"></span></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr class="odd pointer">
-                          <td class="a-center ">
-                            <input type="checkbox" class="flat" name="table_records">
-                          </td>
-                          <td class=" ">0</td>
-                          <td class=" ">Vasito de catsup</td>
-                          <td class=" ">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                          <td class=" ">Vasito de 10ml</td>
-                          <td class=" ">Consumibles en Sucursal</td>
-                          <td class="text-center"><span class="fa fa-times"></span></td>
-                          <td class=" last">
-                            <div class="pull-right noMargin">
-                              <a role="button"><span class="fa fa-trash s20"></span></a>
-                              &nbsp;
-                              <a role="button"><span class="fa fa-edit s20"></span></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- etcetera -->
+                        <?php $articulos = almacen::getArticulos();
+                        foreach ($articulos as $key => $value) { ?>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" "><?= $articulos[$key]['id_articulo'] ?></td>
+                            <td class=" "><?= $articulos[$key]['nombre'] ?></td>
+                            <td class=" "><?= $articulos[$key]['descripcion'] ?></td>
+                            <td class=" "><?= $articulos[$key]['unidades'] ?><?= $articulos[$key]['escala'] ?>. <?= $articulos[$key]['tamaño'] ?></td>
+                            <td class=" "><?= $articulos[$key]['Categoria'] ?></td>
+                            <td class="text-center"><span class="fa fa-check"></span></td>
+                            <td class=" last">
+                              <div class="pull-right noMargin">
+                                <a role="button"><span class="fa fa-trash s20"></span></a>
+                                &nbsp;
+                                <a role="button"><span class="fa fa-edit s20"></span></a>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
@@ -347,7 +331,7 @@ if(!isset($_SESSION['user'])){
           </div>
         </div>
         <!-- page content -->
-		
+
 
         <!-- modals -->
         <div class="modal fade" id="newArtModal" tabindex="-1" role="dialog" aria-labelledby="newArtLabel">
@@ -395,10 +379,11 @@ if(!isset($_SESSION['user'])){
                     <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                       <select id="categoria_articulo" name="categoria_articulo" class="form-control col-md-7 col-xs-12">
-                        <option value="">seleccionar</option>
-                        <option value="">de las categorias</option>
-                        <option value="">que sacamos</option>
-                        <option value="">de la hoja</option>
+                        <option value="">_</option>
+                        <?php $categorias = almacen::getCategorias();
+                        foreach ($categorias as $key => $value) { ?>
+                          <option value="<?= $categorias[$key]['id_categorias'] ?>"><?= $categorias[$key]['nombre'] ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                   </div>
@@ -477,6 +462,9 @@ if(!isset($_SESSION['user'])){
     <!-- Custom Theme Scripts -->
     <script src="js/scripts.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+      saveNewArticle();
+    </script>
   </body>
 
 </html>

@@ -30,7 +30,7 @@ class PDOMYSQL
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 					$datos[] =$row;
 				}
-        return $datos;|
+        return $datos;
 	}
 
 	//regresa nuestra consulta en json
@@ -50,24 +50,24 @@ class PDOMYSQL
 		$datos = json_encode($datos, JSON_UNESCAPED_UNICODE);
 		return $datos;
         }
-		
+
 		//ejecutar consulta salva
-	public  function consultaSegura($query, $arreglo){
-		$query = $this->PDO->prepare($query); 
+	/*public  function consultaSegura($query, $arreglo){
+		$query = $this->PDO->prepare($query);
 		foreach($arregloas $i => $valor){
 			$query->bindParam($i+1,$valor);
 		}
 
 		$query->execute();
 		$datos = array();
-		/*for ($i = 0; $row = $query->fetch();$i++){
-			$datos[] = $row;
-		}*/
+		//for ($i = 0; $row = $query->fetch();$i++){
+		//	$datos[] = $row;
+		//}
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 					$datos[] =$row;
 				}
         return $datos;
-	}
+	}*/
 
 }
 ?>

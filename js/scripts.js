@@ -42,3 +42,29 @@ function newUser(){
     }
   });
 }
+
+function saveNewArticle(){
+  $('#saveNewArticle').click(function(e){
+    e.preventDefault();
+    $.ajax({
+      data:  {
+      "new_articulo": 1,
+      "nombre_articulo": $("#nombre_articulo").val(),
+      "descripcion_articulo": $("#descripcion_articulo").val(),
+      "unidades_articulo": $("#unidades_articulo").val(),
+      "escala_articulo": $("#unidades_articulo").val(),
+      "tamaño_articulo": $("#tamaño_articulo").val(),
+      "categoria_articulo": $("#categoria_articulo").val()
+      },
+      url: 'classes/articulos.php',
+      type: 'post'
+    }).done(function(data){
+      if (data != 0) {
+        //console.log(data);
+        document.location.replace(document.location.pathname);
+      }else{
+        alert('problemas al iniciar session');
+      }
+    });
+  })
+}

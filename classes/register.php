@@ -2,11 +2,9 @@
 require_once('autoloader.php');
 require_once('../config.php');
 
-
 //invocacion de clases
 use pdomysql AS pdomysql;
 use user AS user;
-
 
 if (isset($_POST['register_user'])) {
 	/*$_POST['pass'] = sha1($_POST['pass']);*/

@@ -48,7 +48,7 @@
                 <input type="password" class="form-control" placeholder="Password" name="txtpass"  required="" id="txtpass" />
               </div>
               <div>
-                <button type="button" class="btn btn-default submit_login" >Log in</button>
+                <a role="button" class="btn btn-default submit_login" >Log in</button>
                 <a class="reset_pass" href="#">olvidaste el password?</a>
               </div>
 
