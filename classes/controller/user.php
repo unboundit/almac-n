@@ -48,6 +48,7 @@ class user{
 
     	$PDOMYSQL = new PDOMYSQL;
     	$result =  $PDOMYSQL->consulta($consulta);
+		//checar que trajo
     	$id_Paquete = MaxPaquete();
 		error_log($id_Paquete);
 		$result2 = insertArticuloHasPaquete($id_Articulo, $id_Paquete, $cantidad);
