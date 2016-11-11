@@ -347,6 +347,7 @@ if(!isset($_SESSION['user'])){
           </div>
         </div>
         <!-- page content -->
+		
 
         <!-- modals -->
         <div class="modal fade" id="newArtModal" tabindex="-1" role="dialog" aria-labelledby="newArtLabel">
