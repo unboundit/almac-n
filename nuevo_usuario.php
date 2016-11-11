@@ -237,25 +237,11 @@ if(!isset($_SESSION['user'])){
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <div class="row tile_count">
-            <div class="z-col-lg-3 col-md-3 col-sm-4 col-xs-4 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Artículos Totales</span>
-              <div class="count">2500</div>
-              <!--<span class="count_bottom"><i class="green">4% </i> From last Week</span>-->
-            </div>
-            <div class="z-col-lg-3 z-col-md-3 z-col-sm-4 z-col-xs-4 pull-right noMargin">
-              <div class="z-block h100">
-                <div class="z-content z-contentMiddle">
-                  <button type="button" data-toggle="modal" data-target="#newArtModal" class="btn btn-success cWhite s20 pull-right noMargin">Agregar Artículo <span class="fa fa-plus text-bold"></span></button>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="row">
             <div class="col-lg-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>Catalogo de Artículos <small>Lista de posibles artículos en almacen.</small></h2>
+                  <h2>Agregar usuario <small>Gerente de Sucursal</small></h2>
                   <ul class="nav navbar-right panel_toolbox hidden">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -274,158 +260,62 @@ if(!isset($_SESSION['user'])){
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                  <div class="table-responsive">
-                    <table class="table table-striped jambo_table bulk_action">
-                      <thead>
-                        <tr class="headings">
-                          <th>
-                            <input type="checkbox" id="check-all" class="flat">
-                          </th>
-                          <th class="column-title">id </th>
-                          <th class="column-title">Nombre </th>
-                          <th class="column-title">Descripción </th>
-                          <th class="column-title">Presentación</th>
-                          <th class="column-title">Categoría</th>
-                          <th class="column-title">Materia Prima</th>
-                          <th class="column-title no-link last"><span class="nobr"></span>
-                          </th>
-                          <th class="bulk-actions" colspan="7">
-                            <a class="antoo" style="color:#fff; font-weight:500;">Acciones en Grupo ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                            <div class="pull-right noMargin">
-                              <a role="button" class="cWhite"><span class="fa fa-trash s20"></span></a>
-                              &nbsp;
-                              <a role="button" class="cWhite"><span class="fa fa-edit s20"></span></a>
-                            </div>
-                          </th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <tr class="even pointer">
-                          <td class="a-center ">
-                            <input type="checkbox" class="flat" name="table_records">
-                          </td>
-                          <td class=" ">0</td>
-                          <td class=" ">Salsa de Tomate</td>
-                          <td class=" ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                          <td class=" ">Botella de 1Lt</td>
-                          <td class=" ">Abarrotes</td>
-                          <td class="text-center"><span class="fa fa-check"></span></td>
-                          <td class=" last">
-                            <div class="pull-right noMargin">
-                              <a role="button"><span class="fa fa-trash s20"></span></a>
-                              &nbsp;
-                              <a role="button"><span class="fa fa-edit s20"></span></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr class="odd pointer">
-                          <td class="a-center ">
-                            <input type="checkbox" class="flat" name="table_records">
-                          </td>
-                          <td class=" ">0</td>
-                          <td class=" ">Vasito de catsup</td>
-                          <td class=" ">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                          <td class=" ">Vasito de 10ml</td>
-                          <td class=" ">Consumibles en Sucursal</td>
-                          <td class="text-center"><span class="fa fa-times"></span></td>
-                          <td class=" last">
-                            <div class="pull-right noMargin">
-                              <a role="button"><span class="fa fa-trash s20"></span></a>
-                              &nbsp;
-                              <a role="button"><span class="fa fa-edit s20"></span></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- etcetera -->
-                      </tbody>
-                    </table>
-                  </div>
+                  <form class="form-horizontal form-label-left" novalidate="">
+                    <span class="section">Datos de usuario</span>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name_newUser">Nombre <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="name_newUser" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name_newUser" placeholder="Nombre completo" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email_newUser">Correo <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="email" id="email_newUser" name="email_newUser" required="required" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username_newUser">Usuario <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="username_newUser" name="username_newUser" required="required" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone_newUser">Telephone <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="tel" id="telephone_newUser" name="telephone_newUser" required="" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label for="password_newUser" class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="input-group">
+                          <input id="password_newUser" type="password" name="password_newUser" data-validate-length="6,8" class="form-control" required="required">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary"><span class="fa fa-lock s20nr"></span></button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-3">
+                        <input type="hidden" name="rol_newUser" id="rol_newUser" value="1">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button id="addNewUser" type="button" class="btn btn-success">Guardar</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <!-- page content -->
-		
-
-        <!-- modals -->
-        <div class="modal fade" id="newArtModal" tabindex="-1" role="dialog" aria-labelledby="newArtLabel">
-          <div class="modal-dialog" role="document">
-            <form id="newArtForm" class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="newArtLabel">Agregar un artículo al catálogo</h4>
-              </div>
-              <div class="modal-body">
-                <div class="form-horizontal form-label-left">
-                  <div class="form-group">
-                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="nombre_articulo">Nombre Artículo <span class="required">*</span>
-                    </label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <input type="text" id="nombre_articulo" name="nombre_articulo" required="required" class="form-control col-md-7 col-xs-12">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="descripcion_articulo">Descripción <span class="required">*</span>
-                    </label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <textarea id="descripcion_articulo" name="descripcion_articulo" required="required" class="form-control col-md-7 col-xs-12" rows="8" cols="40"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="unidades_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Unidades</label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <input id="unidades_articulo" name="unidades_articulo" class="form-control col-md-7 col-xs-12" type="text">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="escala_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Escala</label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <input id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12" type="text">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="tamaño_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Tamaño</label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <input id="tamaño_articulo" name="tamaño_articulo" class="form-control col-md-7 col-xs-12" type="text">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <select id="categoria_articulo" name="categoria_articulo" class="form-control col-md-7 col-xs-12">
-                        <option value="">seleccionar</option>
-                        <option value="">de las categorias</option>
-                        <option value="">que sacamos</option>
-                        <option value="">de la hoja</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">¿Materia Prima o conformada?</label>
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                      <div id="tipo_articulo" class="btn-group" data-toggle="buttons">
-                        <label>
-                          <input type="radio" name="tipo_articulo" value="0"> &nbsp; Prima &nbsp;
-                        </label>
-                        <label>
-                          <input type="radio" name="tipo_articulo" value="1"> Conformada
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="ln_solid"></div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="saveNewArticle" class="btn btn-primary">Save changes</button>
-              </div>
-            </form><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <!-- modals -->
 
         <footer>
           <div class="pull-right">
@@ -474,9 +364,39 @@ if(!isset($_SESSION['user'])){
     <!-- bootstrap-daterangepicker -->
     <script src="js/moment/min/moment.min.js"></script>
     <script src="js/bootstrap/daterangepicker.js"></script>
+    <!-- validator -->
+    <script src="js/validator/validator.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="js/scripts.js"></script>
     <script src="js/custom.js"></script>
+    <!-- validator -->
+    <script>
+      // initialize the validator function
+      validator.message.date = 'not a real date';
+
+      // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+      $('form')
+        .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+        .on('change', 'select.required', validator.checkField)
+        .on('keypress', 'input[required][pattern]', validator.keypress);
+
+      $('.multi.required').on('keyup blur', 'input', function() {
+        validator.checkField.apply($(this).siblings().last()[0]);
+      });
+
+      $('#addNewUser').click(function(e) {
+        e.preventDefault();
+        var submit=true;
+        // evaluate the form using generic validaing
+        if (!validator.checkAll($(this).closest('form'))) {
+          submit = false;
+        }
+        if (submit){
+          newUser();
+        }
+      });
+    </script>
+    <!-- /validator -->
   </body>
 
 </html>

@@ -113,7 +113,7 @@ if(!isset($_SESSION['user'])){
                   </li>
                   <li><a href="sucursales.php"><i class="fa fa-bar-chart-o"></i> Sucursales</a>
                   </li>
-                  <li><a href="usuarios.php"><i class="fa fa-bar-chart-o"></i> Usuarios</span></a>
+                  <li><a href="nuevo_usuario.php"><i class="fa fa-users"></i> Usuarios</span></a>
                   </li>
                 </ul>
               </div>

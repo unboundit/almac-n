@@ -19,3 +19,26 @@ function login(){
     });
   })
 }
+
+function newUser(){
+  $.ajax({
+    data:  {
+    "register_user" : 1,
+    "name": $('#name_newUser').val(),
+    "mail": $("#email_newUser").val(),
+    "username" :$("#username_newUser").val(),
+    "telephone": $("#telephone_newUser").val(),
+    "password" : $("#password_newUser").val(),
+    "rol": $("#rol_newUser").val()
+    },
+    url: 'classes/register.php',
+    type: 'post'
+  }).done(function(data){
+    if (data != 0) {
+      console.log(data);
+      //hay que hacer una ventana de SUCCESS
+    }else{
+      alert('problemas al registrar');
+    }
+  });
+}
