@@ -47,7 +47,7 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
       $result =  $PDOMYSQL->consulta($consulta);
 
 }
-  
+
   public static function paquete($descripcion, $id_Articulo, $cantidad){
 		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ('.$descripcion.')';
 		error_log($consulta);
