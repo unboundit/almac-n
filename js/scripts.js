@@ -52,7 +52,7 @@ function saveNewArticle(){
       "nombre_articulo": $("#nombre_articulo").val(),
       "descripcion_articulo": $("#descripcion_articulo").val(),
       "unidades_articulo": $("#unidades_articulo").val(),
-      "escala_articulo": $("#unidades_articulo").val(),
+      "escala_articulo": $("#escala_articulo").val(),
       "tamaño_articulo": $("#tamaño_articulo").val(),
       "categoria_articulo": $("#categoria_articulo").val()
       },

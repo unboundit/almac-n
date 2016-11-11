@@ -152,7 +152,6 @@ if(!isset($_SESSION['user'])){
               <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <select id="categoria_articulo" name="categoria_articulo" class="form-control col-md-7 col-xs-12">
-                  <option value="">_</option>
                   <?php $categorias = almacen::getCategorias();
                   foreach ($categorias as $key => $value) { ?>
                     <option value="<?= $categorias[$key]['id_categorias'] ?>"><?= $categorias[$key]['nombre'] ?></option>
