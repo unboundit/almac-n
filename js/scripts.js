@@ -21,7 +21,6 @@ function login(){
 }
 
 function newUser(){
-  e.preventDefault();
   $.ajax({
     data:  {
     "register_user" : 1,
@@ -37,7 +36,7 @@ function newUser(){
   }).done(function(data){
     if (data != 0) {
       console.log(data);
-      //document.location.replace('panel.php');
+      //hay que hacer una ventana de SUCCESS
     }else{
       alert('problemas al registrar');
     }
