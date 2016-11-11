@@ -77,8 +77,8 @@ function saveNewPaquete(){
       "new_paquete": 1,
       "nombre_paquete": $("#nombre_paquete").val(),
       "descripcion_paquete": $("#descripcion_paquete").val(),
-      "articulo_paquete": $("#articulo_paquete").val()
-      "cantidad_paquete": $("#cantidad_paquete").val(),
+      "articulo_paquete": $("#articulo_paquete").val(),
+      "cantidad_paquete": $("#cantidad_paquete").val()
       },
       url: 'classes/articulos.php',
       type: 'post'
