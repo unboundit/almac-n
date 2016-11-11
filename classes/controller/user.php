@@ -56,7 +56,7 @@ class user{
 
    	return $result;
   }
-  public static function MaxPaquete(){
+  private static function MaxPaquete(){
   	$consulta = 'select MAX(id_paquetes) from almacen.paquetes';
 		error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
@@ -64,9 +64,18 @@ class user{
 
    	return $result;
   }
-  public static function insertArticuloHasPaquete($id_articulo, $id_paquetes, $cantidad){
-  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo,paquetes_id_paquetes,cantidad) VALUES .
-  	 ('$id_articulo','.$id_paquetes,','.$cantidad .' )';
+  private static function insertArticuloHasPaquete($id_articulo, $id_paquetes, $cantidad){
+  	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo,paquetes_id_paquetes,cantidad) VALUES '.
+  	 '('.$id_articulo.','.$id_paquetes,','.$cantidad .' )';
+
+		error_log($consulta);
+
+    	$PDOMYSQL = new PDOMYSQL;
+    	$result =  $PDOMYSQL->consulta($consulta);
+  }
+  public static function existencias($id_articulo, $cantidad, $fecha)){
+  	$consulta = 'INSERT INTO almacen.existencias (Cont, articulos_id_articulo, fecha) VALUES '.
+  	 '('.$id_articulo.','.$id_articulo,,','.$fecha .' )';
 
 		error_log($consulta);
 
