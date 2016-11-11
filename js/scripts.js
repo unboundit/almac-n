@@ -84,8 +84,8 @@ function saveNewPaquete(){
       type: 'post'
     }).done(function(data){
       if (data != 0) {
-        console.log(data);
-        //document.location.replace(document.location.pathname);
+        //console.log(data);
+        document.location.replace(document.location.pathname);
       }else{
         alert('problemas al crear paquete\n'+data);
       }
