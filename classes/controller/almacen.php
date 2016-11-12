@@ -21,9 +21,19 @@ where B.id_categorias group BY  B.id_categorias ASC';
     return $result;
 
   }
+  public static function getSumTotPaquetes(){ 
+    $consulta = 'SELECT count(A.id_paquetes) as ids, C.nombre, sum(B.cantidad) as suma FROM almacen.paquetes as A
+INNER JOIN almacen.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
+INNER JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo 
+where C.id_articulo  group By C.id_articulo  ASC';
+     error_log($consulta);
+     $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+    return $result;
+  }
 
   public static function getCategorias(){
-		$consulta = 'select * from almacen.categorias';
+		$consulta = 'SELECT * from almacen.categorias';
 		error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -40,6 +50,15 @@ WHERE A.id_paquetes ORDER BY A.id_paquetes ASC';
     return $result;
 
   }
+  //ALTAS
+public static function upSucursal( $nomSucursal){
+    $consulta = 'INSERT INTO almacen.sucursal (NomSucursal) VALUES ('.$nomSucursal.');';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+    return $result;
+  }
+
   public static function upSalidaAlmacen($id_paquete, $id_sucursal){
     $consulta = 'INSERT INTO almacen.salidaalmacen (fecha) VALUES (CURDATE())';
     error_log($consulta);
@@ -51,24 +70,6 @@ WHERE A.id_paquetes ORDER BY A.id_paquetes ASC';
     return $result;
 
   }
-private static function MaxSalidaAlmacen(){
-    $consulta = 'select MAX(idSalidaAlmacen) from almacen.salidaalmacen';
-    error_log($consulta);
-    $PDOMYSQL = new PDOMYSQL;
-    $result =  $PDOMYSQL->consulta($consulta);
-
-    return $result;
-  }
-private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen, $id_sucursal){
-  $consulta = 'INSERT INTO almacen.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
-
-    error_log($consulta);
-
-      $PDOMYSQL = new PDOMYSQL;
-      $result =  $PDOMYSQL->consulta($consulta);
-
-}
-
   public static function paquete($descripcion, $id_Articulo, $cantidad){
 
 		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ("'.$descripcion.'")';
@@ -87,16 +88,6 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
       return 0;
     }
   }
-
-  private static function MaxPaquete(){
-  	$consulta = 'select MAX(id_paquetes) from almacen.paquetes';
-		error_log($consulta);
-    $PDOMYSQL = new PDOMYSQL;
-    $result =  $PDOMYSQL->consulta($consulta);
-
-   	return $result;
-  }
-
 
   public static function insertArticuloHasPaquete($id_articulo, $id_paquete, $cantidad){
   	$consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquete.'","'.$cantidad .'" )';
@@ -161,5 +152,33 @@ private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen
     $result =  $PDOMYSQL->consultaSegura($consulta,$areglo);
    	return $result;
   }
+  //FUnciones Privadas
+  private static function MaxPaquete(){
+    $consulta = 'select MAX(id_paquetes) from almacen.paquetes';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+
+    return $result;
+  }
+
+private static function MaxSalidaAlmacen(){
+    $consulta = 'select MAX(idSalidaAlmacen) from almacen.salidaalmacen';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+
+    return $result;
+  }
+private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen, $id_sucursal){
+  $consulta = 'INSERT INTO almacen.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
+
+    error_log($consulta);
+
+      $PDOMYSQL = new PDOMYSQL;
+      $result =  $PDOMYSQL->consulta($consulta);
+
+  }
+
 }
 ?>
