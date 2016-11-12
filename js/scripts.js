@@ -93,6 +93,29 @@ function saveNewPaquete(){
   })
 }
 
+function saveExistencias(){
+  $('#saveExistencias').click(function(e){
+    e.preventDefault();
+    $.ajax({
+      data:  {
+      "new_existencia": 1//,
+      /*"nombre_paquete": $("#nombre_paquete").val(),
+      "descripcion_paquete": $("#descripcion_paquete").val(),
+      "articulo_paquete": $("#articulo_paquete").val(),
+      "cantidad_paquete": $("#cantidad_paquete").val()*/
+      },
+      url: 'classes/articulos.php',
+      type: 'post'
+    }).done(function(data){
+      if (data != 0) {
+        console.log(data);
+        //document.location.replace(document.location.pathname);
+      }else{
+        alert('problemas al crear paquete\n'+data);
+      }
+    });
+  })
+}
 
 $(document).ready(function(){
   if($('#login').length!=0){
@@ -139,5 +162,8 @@ $(document).ready(function(){
     $('.buttonNext').addClass('btn btn-success');
     $('.buttonPrevious').addClass('btn btn-primary');
     $('.buttonFinish').addClass('btn btn-default');
+  }
+  if($('#existencias').length!=0){
+    saveExistencias();
   }
 })

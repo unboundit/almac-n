@@ -219,7 +219,7 @@ body *:after, .wrapper *:after, .z-container *:after, .z-container-fluid *:after
 .mh700 { max-height: 700px; }.mh750 { max-height: 750px; }
 .mh800 { max-height: 800px; }.mh850 { max-height: 850px; }
 
-.mw50 { max-width: 50px; }
+.mw150 { max-width: 150px; }
 @media (max-width: 768px) {
   /*.hFull { min-height: 600px!important; }*/
   .z-container-fluid.res{display:block; width:100%;}

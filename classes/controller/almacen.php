@@ -39,25 +39,29 @@ where C.id_articulo  group By C.id_articulo  ASC';
     $result =  $PDOMYSQL->consulta($consulta);
    	return $result;
   }
+
   public static function getPaquetes(){
     $consulta = 'SELECT A.id_paquetes, A.descripcion, C.nombre, B.cantidad FROM almacen.paquetes as A
 INNER JOIN almacen.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
 inner JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo
 WHERE A.id_paquetes ORDER BY A.id_paquetes ASC';
+
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
     return $result;
 
   }
-  //ALTAS
+
 public static function upSucursal( $nomSucursal){
     $consulta = 'INSERT INTO almacen.sucursal (NomSucursal) VALUES ('.$nomSucursal.');';
+
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
     return $result;
   }
+
 
   public static function upSalidaAlmacen($id_paquete, $id_sucursal){
     $consulta = 'INSERT INTO almacen.salidaalmacen (fecha) VALUES (CURDATE())';
@@ -70,8 +74,26 @@ public static function upSucursal( $nomSucursal){
     return $result;
 
   }
-  public static function paquete($descripcion, $id_Articulo, $cantidad){
+  private static function MaxSalidaAlmacen(){
+      $consulta = 'select MAX(idSalidaAlmacen) from almacen.salidaalmacen';
+      error_log($consulta);
+      $PDOMYSQL = new PDOMYSQL;
+      $result =  $PDOMYSQL->consulta($consulta);
 
+      return $result;
+    }
+
+  private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen, $id_sucursal){
+    $consulta = 'INSERT INTO almacen.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
+
+      error_log($consulta);
+
+        $PDOMYSQL = new PDOMYSQL;
+        $result =  $PDOMYSQL->consulta($consulta);
+
+  }
+
+  public static function paquete($descripcion, $id_Articulo, $cantidad){
 		$consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ("'.$descripcion.'")';
 		//error_log(print_r($consulta, true));
     $check = 'SELECT id_paquetes FROM almacen.paquetes WHERE descripcion = "'.$descripcion.'"';
@@ -87,6 +109,16 @@ public static function upSucursal( $nomSucursal){
     } else {
       return 0;
     }
+  }
+
+
+  private static function MaxPaquete(){
+  	$consulta = 'select MAX(id_paquetes) from almacen.paquetes';
+		error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+
+   	return $result;
   }
 
   public static function insertArticuloHasPaquete($id_articulo, $id_paquete, $cantidad){
