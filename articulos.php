@@ -12,15 +12,15 @@ if(!isset($_SESSION['user'])){
   <div id="articulos" class="right_col" role="main">
     <div class="row tile_count">
      <?php $articulos = almacen::getSumArticulos();
-     foreach ($articulos as $key => $value) { ?>
-      <div class="z-col-lg-3 col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-       
-        <span class="count_top"><i class="fa fa-user"></i> Artículos <?= $articulos[$key]['nombre'] ?></span>
-        <div class="count"><?= $articulos[$key]['suma'] ?></div>
-        <!--<span class="count_bottom"><i class="green">4% </i> From last Week</span>-->
-      </div>
-      <?php } ?>
-      <div class="z-col-lg-3 z-col-md-3 z-col-sm-4 z-col-xs-6 pull-right noMargin">
+       /*foreach ($articulos as $key => $value) { ?>
+        <div class="z-col-lg-3 col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+
+          <span class="count_top"><i class="fa fa-user"></i> Artículos <?= $articulos[$key]['nombre'] ?></span>
+          <div class="count"><?= $articulos[$key]['suma'] ?></div>
+          <!--<span class="count_bottom"><i class="green">4% </i> From last Week</span>-->
+        </div>
+      <?php }*/ ?>
+      <div class="z-col-lg-4 z-col-md-4 z-col-sm-6 z-col-xs-6 pull-right noMargin">
         <div class="z-block h100">
           <div class="z-content z-contentMiddle">
             <button type="button" data-toggle="modal" data-target="#newArtModal" class="btn btn-success cWhite s20 pull-right noMargin">Agregar Artículo <span class="fa fa-plus text-bold"></span></button>

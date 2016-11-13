@@ -3,9 +3,9 @@ function login(){
     e.preventDefault();
     $.ajax({
       data:  {
-      "login_user" : 1,
-      "txtusuario": $("#txtuser").val(),
-      "txtpass": $("#txtpass").val()
+        "login_user" : 1,
+        "txtusuario": $("#txtuser").val(),
+        "txtpass": $("#txtpass").val()
       },
       url: 'classes/login.php',
       type: 'post'
@@ -96,24 +96,39 @@ function saveNewPaquete(){
 function saveExistencias(){
   $('#saveExistencias').click(function(e){
     e.preventDefault();
-    $.ajax({
-      data:  {
-      "new_existencia": 1//,
-      /*"nombre_paquete": $("#nombre_paquete").val(),
-      "descripcion_paquete": $("#descripcion_paquete").val(),
-      "articulo_paquete": $("#articulo_paquete").val(),
-      "cantidad_paquete": $("#cantidad_paquete").val()*/
-      },
-      url: 'classes/articulos.php',
-      type: 'post'
-    }).done(function(data){
-      if (data != 0) {
-        console.log(data);
-        //document.location.replace(document.location.pathname);
-      }else{
-        alert('problemas al crear paquete\n'+data);
+    var existencias = [];
+    var id_art, cant_art;
+    $.each($('#availableArticles tbody tr'),function(key, val){
+      cant_art = $(val).find('.cant').val()
+      if(cant_art != ''){
+        id_art = $(val).find('.id').val();
+        existencias.push(
+          {index: key, id_articulo: id_art, cantidad_articulo: cant_art }
+        );
       }
-    });
+    })
+    if(existencias.length != 0){
+      $.ajax({
+        data:  {
+          "new_existencia": 1,
+          "existencias": existencias
+          //"descripcion_paquete": $("#descripcion_paquete").val(),
+          //"articulo_paquete": $("#articulo_paquete").val(),
+          //"cantidad_paquete": $("#cantidad_paquete").val()
+        },
+        url: 'classes/articulos.php',
+        type: 'post'
+      }).done(function(data){
+        if (data != 0) {
+          console.log(data);
+          //document.location.replace(document.location.pathname);
+        }else{
+          alert('problemas al crear paquete\n'+data);
+        }
+      });
+    } else {
+      console.log('No hay datos para insertar');
+    }
   })
 }
 

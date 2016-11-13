@@ -23,12 +23,15 @@ class user{
 		error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
-   	return $result;
+    if($result){
+      return $result;
+    } else {
+      echo 0;
+    }
+  }
+
+  public static function logout(){
+    session_destroy();
   }
 }
-  public static function logout(){
-
-  session_destroy();
-
-  }
 ?>

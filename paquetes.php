@@ -11,15 +11,15 @@ if(!isset($_SESSION['user'])){
 
   <div id="paquetes" class="right_col" role="main">
     <div class="row tile_count">
-    <?php $articulos = almacen::getSumTotPaquetes();
-     foreach ($articulos as $key => $value) { ?>
-      <div class="z-col-lg-3 col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-user"></i> <?= $articulos[$key]['ids'] ?>  Paquetes Totales de <?= $articulos[$key]['nombre'] ?></span>
-        <div class="count"><?= $articulos[$key]['suma'] ?></div>
-        <!--<span class="count_bottom"><i class="green">4% </i> From last Week</span>-->
-      </div>
-      <?php } ?>
-      <div class="z-col-lg-3 z-col-md-3 z-col-sm-4 z-col-xs-6 pull-right noMargin">
+      <?php $articulos = almacen::getSumTotPaquetes();
+        /*foreach ($articulos as $key => $value) { ?>
+        <div class="z-col-lg-3 col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> <?= $articulos[$key]['ids'] ?>  Paquetes Totales de <?= $articulos[$key]['nombre'] ?></span>
+          <div class="count"><?= $articulos[$key]['suma'] ?></div>
+          <!--<span class="count_bottom"><i class="green">4% </i> From last Week</span>-->
+        </div>
+      <?php }*/ ?>
+      <div class="z-col-lg-4 z-col-md-4 z-col-sm-6 z-col-xs-6 pull-right noMargin">
         <div class="z-block h100">
           <div class="z-content z-contentMiddle">
             <button type="button" data-toggle="modal" data-target="#newPaqModal" class="btn btn-success cWhite s20 pull-right noMargin">Agregar Paquete <span class="fa fa-plus text-bold"></span></button>
@@ -54,14 +54,10 @@ if(!isset($_SESSION['user'])){
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
                   <tr class="headings">
-                    <th>
-                      <input type="checkbox" id="check-all" class="flat">
-                    </th>
                     <th class="column-title">id </th>
                     <th class="column-title">Descripción </th>
                     <th class="column-title">Articulos</th>
-                    <th class="column-title">Cantidad</th>
-                    <th class="column-title no-link last"><span class="nobr"></span></th>
+                    <th class="column-title last">Cantidad</th>
                     <th class="bulk-actions" colspan="7">
                       <a class="antoo" style="color:#fff; font-weight:500;">Acciones en Grupo ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                       <div class="pull-right noMargin">
@@ -77,21 +73,10 @@ if(!isset($_SESSION['user'])){
                   <?php $articulos = almacen::getPaquetes();
                   foreach ($articulos as $key => $value) { ?>
                     <tr class="even pointer">
-                      <td class="a-center ">
-                        <input type="checkbox" class="flat" name="table_records">
-                      </td>
                       <td class=" "><?= $articulos[$key]['id_paquetes'] ?></td>
                       <td class=" "><?= $articulos[$key]['descripcion'] ?></td>
                       <td class=" "><?= $articulos[$key]['nombre'] ?></td>
-                      <td class=" "><?= $articulos[$key]['cantidad'] ?></td>
-                      <td class="text-center"><span class="fa fa-check"></span></td>
-                      <td class=" last">
-                        <div class="pull-right noMargin">
-                          <a role="button"><span class="fa fa-trash s20"></span></a>
-                          &nbsp;
-                          <a role="button"><span class="fa fa-edit s20"></span></a>
-                        </div>
-                      </td>
+                      <td class=" last"><?= $articulos[$key]['cantidad'] ?></td>
                     </tr>
                   <?php } ?>
                 </tbody>

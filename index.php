@@ -49,13 +49,13 @@
               </div>
               <div>
                 <a role="button" class="btn btn-default submit_login" >Log in</button>
-                <a class="reset_pass" href="#">olvidaste el password?</a>
+                <a class="reset_pass hidden" href="#">olvidaste el password?</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">No tienes cuenta?
+                <p class="change_link hidden">No tienes cuenta?
                   <a href="#signup" class="to_register"> Crear una </a>
                 </p>
 
@@ -71,7 +71,7 @@
           </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
+        <div id="register" class="animate form registration_form hidden">
           <section class="login_content">
             <form>
               <h1>Crear Cuenta</h1>

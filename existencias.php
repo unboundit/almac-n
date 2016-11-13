@@ -124,7 +124,7 @@ if(!isset($_SESSION['user'])){
           </div>
           <div class="x_content">
             <div class="table-responsive">
-              <table class="table table-striped jambo_table">
+              <table id="availableArticles" class="table table-striped jambo_table">
                 <thead>
                   <tr class="headings">
                     <th class="column-title">Artículo </th>
@@ -142,8 +142,8 @@ if(!isset($_SESSION['user'])){
                       <td class=" ">$cantidad de ayer</td>
                       <td class=" last">
                         <div class="form-group">
-                          <input type="number" id="cantidad_existencia_<?= $articulos[$key]['id_articulo'] ?>" name="cantidad_existencia_<?= $articulos[$key]['id_articulo'] ?>" required="required" class="form-control mw150">
-                          <input type="hidden" id="idarticulo_existencia_<?= $articulos[$key]['id_articulo'] ?>" name="idarticulo_existencia_<?= $articulos[$key]['id_articulo'] ?>" value="<?= $articulos[$key]['id_articulo'] ?>">
+                          <input type="number" id="cantidad_existencia_<?= $articulos[$key]['id_articulo'] ?>" name="cantidad_existencia_<?= $articulos[$key]['id_articulo'] ?>" required="required" class="cant form-control mw150">
+                          <input class="id" type="hidden" id="idarticulo_existencia_<?= $articulos[$key]['id_articulo'] ?>" name="idarticulo_existencia_<?= $articulos[$key]['id_articulo'] ?>" value="<?= $articulos[$key]['id_articulo'] ?>">
                         </div>
                       </td>
                     </tr>
