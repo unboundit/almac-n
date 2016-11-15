@@ -27,4 +27,14 @@ if (isset($_POST['new_paquete'])) {
 	}
 }
 
+if (isset($_POST['new_existencia'])) {
+  //aqui falta tomar el post y agregar las variables al metodo de las existencias
+  $result = almacen::existencias();
+  if (!empty($result)) {
+		echo json_encode($result);
+	}else{
+		echo 0;
+	}
+}
+
 ?>
