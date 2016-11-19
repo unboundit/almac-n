@@ -5,7 +5,7 @@ use almacen AS almacen;
 
 class almacen{
   public static function getArticulos(){
-    $consulta = 'SELECT a.id_articulo,a.nombre,a.descripcion,a.unidades,a.escala,a.tamaño, b.nombre as Categoria from almacen.articulos as a inner join almacen.categorias b on b.id_categorias = a.categorias_id_categorias WHERE a.id_articulo ORDER BY a.id_articulo ASC';
+    $consulta = 'SELECT a.id_articulo,a.nombre,a.descripcion,c.nomEscala,a.tamaño, b.nombre as Categoria from almacen.articulos as a inner join almacen.categorias b on b.id_categorias = a.categorias_id_categorias inner join almacen.escalas c on c.idescalas = a.escalas_idescalas WHERE a.id_articulo ORDER BY a.id_articulo ASC';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -55,7 +55,7 @@ class almacen{
 
   }
 
-  public static function upSucursal( $nomSucursal){
+  public static function upSucursal($nomSucursal){
     $consulta = 'INSERT INTO almacen.sucursal (NomSucursal) VALUES ('.$nomSucursal.');';
 
     error_log($consulta);
@@ -116,12 +116,10 @@ class almacen{
     $result =  $PDOMYSQL->consulta($consulta);
   }
 
-  public static function upArticulo($nombre, $descripcion, $unidades, $escala, $tamano, $cat_id_cat){
-    $consulta = 'INSERT INTO almacen.articulos (nombre, descripcion, unidades, escala, tamaño, categorias_id_categorias)
-    VALUES ("'.$nombre.'","'.$descripcion.'","'.$unidades.'","'.$escala.'","'.$tamano.'","'.$cat_id_cat.'")';
-    error_log($consulta);
-    $check = 'SELECT * FROM almacen.articulos WHERE
-    nombre = "'.$nombre.'" and descripcion = "'.$descripcion.'" and escala = "'.$escala.'" and tamaño = "'.$tamano.'" and categorias_id_categorias ="'.$cat_id_cat.'"';
+  public static function upArticulo($nombre, $descripcion, $tamano, $cat_id_cat, $esc_idescala){
+    $consulta = 'INSERT INTO almacen.articulos (nombre, descripcion, tamaño, categorias_id_categorias, escalas_idescalas) VALUES ("'.$nombre.'","'.$descripcion.'","'.$tamano.'","'.$cat_id_cat.'","'.$esc_idescala.'")"';
+
+    $check = 'SELECT * FROM almacen.articulos WHERE nombre = "'.$nombre.'" and descripcion = "'.$descripcion.'" and tamaño = "'.$tamano.'" and categorias_id_categorias ="'.$cat_id_cat.'"'."'and escalas_idescalas ='".$esc_idescala.'"';
     error_log($check);
     $PDOMYSQL = new PDOMYSQL;
     $insert = $PDOMYSQL->consulta($consulta);
@@ -182,6 +180,16 @@ class almacen{
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
   }
+
+  public static function chearExistencas($id_PaquetesArray){
+    $query ='';
+
+    for ($i=0; $i < count($id_PaquetesArray); $i++) { 
+      # code...   
+    }
+  }
+
+
 
 }
 ?>
