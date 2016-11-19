@@ -20,5 +20,16 @@ if (isset($_POST['login_user'])) {
 		echo 0;
 	}
 }
+if (isset($_POST['logout'])) {
+	/*$_POST['pass'] = sha1($_POST['pass']);*/
+	$result = user::logout();
+	//error_log($result);
+	if (!empty($result)) {
+
+		echo json_encode($result);
+	}else{
+		echo 0;
+	}
+}
 
 ?>
