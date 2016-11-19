@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema ALMACEN
+-- Schema u300697298_almcn
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema ALMACEN
+-- Schema u300697298_almcn
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `ALMACEN` DEFAULT CHARACTER SET utf8 ;
-USE `ALMACEN` ;
+CREATE SCHEMA IF NOT EXISTS `u300697298_almcn` DEFAULT CHARACTER SET utf8 ;
+USE `u300697298_almcn` ;
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`usuarios`
+-- Table `u300697298_almcn`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NULL,
   `password` VARCHAR(255) NULL,
@@ -27,9 +27,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`categorias`
+-- Table `u300697298_almcn`.`categorias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`categorias` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`categorias` (
   `id_categorias` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NULL,
   PRIMARY KEY (`id_categorias`))
@@ -37,9 +37,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`escalas`
+-- Table `u300697298_almcn`.`escalas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`escalas` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`escalas` (
   `idescalas` INT NOT NULL AUTO_INCREMENT,
   `nomEscala` VARCHAR(10) NULL,
   PRIMARY KEY (`idescalas`))
@@ -47,9 +47,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`articulos`
+-- Table `u300697298_almcn`.`articulos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`articulos` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`articulos` (
   `id_articulo` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NULL,
   `descripcion` VARCHAR(255) NULL,
@@ -61,19 +61,21 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`paquetes`
+-- Table `u300697298_almcn`.`paquetes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`paquetes` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`paquetes` (
   `id_paquetes` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(45) NULL,
+  `canitdad` INT NULL,
+  `articulos_id_articulo` INT NOT NULL,
   PRIMARY KEY (`id_paquetes`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`Existencias`
+-- Table `u300697298_almcn`.`Existencias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`Existencias` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`Existencias` (
   `idExistencias` INT NULL,
   `Cont` INT NULL,
   `articulos_id_articulo` INT NOT NULL,
@@ -83,9 +85,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`SalidaAlmacen`
+-- Table `u300697298_almcn`.`SalidaAlmacen`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`SalidaAlmacen` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`SalidaAlmacen` (
   `idSalidaAlmacen` INT NULL,
   `fecha` DATE NULL,
   PRIMARY KEY (`idSalidaAlmacen`))
@@ -93,9 +95,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`Sucursal`
+-- Table `u300697298_almcn`.`Sucursal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`Sucursal` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`Sucursal` (
   `idSucursal` INT NOT NULL,
   `NomSucursal` VARCHAR(45) NULL,
   PRIMARY KEY (`idSucursal`))
@@ -103,9 +105,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`SalidaAlmacen_has_Sucursal`
+-- Table `u300697298_almcn`.`SalidaAlmacen_has_Sucursal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`SalidaAlmacen_has_Sucursal` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`SalidaAlmacen_has_Sucursal` (
   `SalidaAlmacen_idSalidaAlmacen` INT NOT NULL,
   `Sucursal_idSucursal` INT NOT NULL,
   PRIMARY KEY (`SalidaAlmacen_idSalidaAlmacen`, `Sucursal_idSucursal`))
@@ -113,9 +115,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`Entrada_Sucursal`
+-- Table `u300697298_almcn`.`Entrada_Sucursal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`Entrada_Sucursal` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`Entrada_Sucursal` (
   `idEntrada_Sucursal` INT NOT NULL,
   `paquete` VARCHAR(45) NULL,
   `fecha` DATE NULL,
@@ -125,24 +127,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ALMACEN`.`paquetes_has_SalidaAlmacen`
+-- Table `u300697298_almcn`.`paquetes_has_SalidaAlmacen`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`paquetes_has_SalidaAlmacen` (
+CREATE TABLE IF NOT EXISTS `u300697298_almcn`.`paquetes_has_SalidaAlmacen` (
   `paquetes_id_paquetes` INT NOT NULL,
   `SalidaAlmacen_idSalidaAlmacen` INT NOT NULL,
   `Sucursal_idSucursal` INT NOT NULL,
   PRIMARY KEY (`paquetes_id_paquetes`, `SalidaAlmacen_idSalidaAlmacen`, `Sucursal_idSucursal`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ALMACEN`.`articulos_has_paquetes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ALMACEN`.`articulos_has_paquetes` (
-  `articulos_id_articulo` INT NOT NULL,
-  `paquetes_id_paquetes` INT NOT NULL,
-  `cantidad` INT NULL,
-  PRIMARY KEY (`articulos_id_articulo`, `paquetes_id_paquetes`))
 ENGINE = InnoDB;
 
 
