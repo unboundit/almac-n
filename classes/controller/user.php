@@ -32,7 +32,12 @@ class user{
   }
 
   public static function logout(){
-    session_destroy();
+    if(session_destroy()){
+      return true;
+    } else {
+      echo 0;
+    }
+
   }
 }
 ?>

@@ -20,7 +20,7 @@ function login(){
   })
 }
 function logout(){
-  $('.submit_logout').click(function(e){
+  $('#submit_logout').click(function(e){
     e.preventDefault();
     $.ajax({
       data:  {
