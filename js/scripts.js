@@ -19,6 +19,26 @@ function login(){
     });
   })
 }
+function logout(){
+  $('.submit_logout').click(function(e){
+    e.preventDefault();
+    $.ajax({
+      data:  {
+        "logout" : 1
+      },
+      url: 'classes/login.php',
+      type: 'post'
+    }).done(function(data){
+      if (data != 0) {
+        //console.log(data);
+        document.location.replace('index.php');
+      }else{
+        alert('No se puede deslogear');
+        console.log(data);
+      }
+    });
+  })
+}
 
 function newUser(){
   $.ajax({
@@ -135,6 +155,9 @@ function saveExistencias(){
 $(document).ready(function(){
   if($('#login').length!=0){
     login();
+  }
+  if ($('#submit_logout').length!= 0) {
+    logout();
   }
   if($('#articulos').length!=0){
     saveNewArticle();
