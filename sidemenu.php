@@ -54,23 +54,35 @@
       </div>
     -->
       <div class="menu_section">
-        <h3>Almacen</h3>
+        <h3>Catalogos</h3>
         <ul class="nav side-menu">
-          <li><a href="existencias.php"><i class="fa fa-calendar-check-o"></i> Inventario Diario</a>
+          <li>
+            <a href="articulos.php"><i class="fa fa-table"></i> Catalogo de Artículos</a>
           </li>
-          <li><a href="salida_almacen.php"><i class="fa fa-th-list"></i> Crear Salida de Almacen</a>
+          <li>
+            <a href="paquetes.php"><i class="fa fa-archive"></i> Paquetes</a>
           </li>
         </ul>
       </div>
-
+      <div class="menu_section">
+        <h3>Almacen</h3>
+        <ul class="nav side-menu">
+          <li>
+            <a href="existencias.php"><i class="fa fa-calendar-check-o"></i> Inventario Diario</a>
+          </li>
+          <li>
+            <a href="salida_almacen.php"><i class="fa fa-th-list"></i> Crear Salida de Almacen</a>
+          </li>
+        </ul>
+      </div>
       <div class="menu_section">
         <h3>Organización</h3>
         <ul class="nav side-menu">
-          <li><a href="panel.php"><i class="fa fa-bar-chart"></i> Reportes</a>
+          <li>
+            <a href="panel.php"><i class="fa fa-bar-chart"></i> Reportes</a>
           </li>
-          <li><a href="articulos.php"><i class="fa fa-table"></i> Catalogo de Artículos</a>
-          </li>
-          <li><a href="paquetes.php"><i class="fa fa-archive"></i> Paquetes</a>
+          <li>
+            <a href="sucursales.php"><i class="fa fa-building-o"></i> Sucursales</a>
           </li>
           <li><a href="nuevo_usuario.php"><i class="fa fa-users"></i> Usuarios</span></a>
           </li>
