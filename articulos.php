@@ -63,7 +63,7 @@ if(!isset($_SESSION['user'])){
                     <th class="column-title">Descripción </th>
                     <th class="column-title">Presentación</th>
                     <th class="column-title">Categoría</th>
-                    <th class="column-title">Materia Prima</th>
+                    <th class="column-title">Escala</th>
                     <th class="column-title no-link last"><span class="nobr"></span>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -87,8 +87,9 @@ if(!isset($_SESSION['user'])){
                       <td class=" "><?= $articulos[$key]['id_articulo'] ?></td>
                       <td class=" "><?= $articulos[$key]['nombre'] ?></td>
                       <td class=" "><?= $articulos[$key]['descripcion'] ?></td>
-                      <td class=" "><?= $articulos[$key]['unidades'] ?><?= $articulos[$key]['escala'] ?>. <?= $articulos[$key]['tamaño'] ?></td>
+                      <td class=" "><?= $articulos[$key]['tamano'] ?></td>
                       <td class=" "><?= $articulos[$key]['Categoria'] ?></td>
+                      <td class=" "><?= $articulos[$key]['Escala'] ?></td>
                       <td class="text-center"><span class="fa fa-check"></span></td>
                       <td class=" last">
                         <div class="pull-right noMargin">
@@ -134,16 +135,21 @@ if(!isset($_SESSION['user'])){
                 <textarea id="descripcion_articulo" name="descripcion_articulo" required="required" class="form-control col-md-7 col-xs-12" rows="8" cols="40"></textarea>
               </div>
             </div>
-            <div class="form-group">
+           <!-- <div class="form-group">
               <label for="unidades_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Unidades</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <input id="unidades_articulo" name="unidades_articulo" class="form-control col-md-7 col-xs-12" type="text">
               </div>
-            </div>
+            </div>-->
             <div class="form-group">
               <label for="escala_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Escala</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <input id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12" type="text">
+                <select id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12">
+                  <?php $escalas = almacen::getEscalas();
+                  foreach ($escalas as $key => $value) { ?>
+                    <option value="<?= $escalas[$key]['idescalas'] ?>"><?= $escalas[$key]['nomEscala'] ?></option>
+                  <?php } ?>
+                 </select>
               </div>
             </div>
             <div class="form-group">
@@ -163,7 +169,7 @@ if(!isset($_SESSION['user'])){
                 </select>
               </div>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
               <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">¿Materia Prima o conformada?</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <div id="tipo_articulo" class="btn-group" data-toggle="buttons">
@@ -175,7 +181,7 @@ if(!isset($_SESSION['user'])){
                   </label>
                 </div>
               </div>
-            </div>
+            </div>-->
             <div class="ln_solid"></div>
           </div>
         </div>

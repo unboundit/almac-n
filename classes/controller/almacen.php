@@ -3,9 +3,12 @@
 use pdomysql AS pdomysql;
 use almacen AS almacen;
 
+
 class almacen{
   public static function getArticulos(){
-    $consulta = 'SELECT a.id_articulo,a.nombre,a.descripcion,c.nomEscala,a.tamaño, b.nombre as Categoria from almacen.articulos as a inner join almacen.categorias b on b.id_categorias = a.categorias_id_categorias inner join almacen.escalas c on c.idescalas = a.escalas_idescalas WHERE a.id_articulo ORDER BY a.id_articulo ASC';
+    $consulta = "SELECT a.id_articulo,a.nombre,a.descripcion,a.tamano, b.nombre as Categoria, c.nomEscala as Escala from articulos as a 
+inner join categorias b on b.id_categorias = a.categorias_id_categorias
+inner join escalas c on c.idescalas = a.escalas_idescalas WHERE a.id_articulo ORDER BY a.id_articulo ASC";
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -13,8 +16,7 @@ class almacen{
   }
 
   public static function getSumArticulos(){
-    $consulta = 'SELECT B.id_categorias, SUM(A.unidades) AS suma, B.nombre from almacen.articulos AS A
-    INNER JOIN almacen.categorias B on A.categorias_id_categorias = B.id_categorias
+    $consulta = 'SELECT B.id_categorias, SUM(A.unidades) AS suma, B.nombre from u300697298_almcn.articulos AS A INNER JOIN u300697298_almcn.categorias B on A.categorias_id_categorias = B.id_categorias
     where B.id_categorias group BY  B.id_categorias ASC';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
@@ -24,9 +26,9 @@ class almacen{
   }
 
   public static function getSumTotPaquetes(){
-    $consulta = 'SELECT count(A.id_paquetes) as ids, C.nombre, sum(B.cantidad) as suma FROM almacen.paquetes as A
-    INNER JOIN almacen.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
-    INNER JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo
+    $consulta = 'SELECT count(A.id_paquetes) as ids, C.nombre, sum(B.cantidad) as suma FROM u300697298_almcn.paquetes as A
+    INNER JOIN u300697298_almcn.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
+    INNER JOIN u300697298_almcn.articulos C on B.articulos_id_articulo = C.id_articulo
     where C.id_articulo  group By C.id_articulo  ASC';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
@@ -35,7 +37,14 @@ class almacen{
   }
 
   public static function getCategorias(){
-    $consulta = 'SELECT * from almacen.categorias';
+    $consulta = 'SELECT * from u300697298_almcn.categorias';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+    return $result;
+  }
+    public static function getEscalas(){
+    $consulta = 'SELECT * from u300697298_almcn.escalas';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -43,9 +52,8 @@ class almacen{
   }
 
   public static function getPaquetes(){
-    $consulta = 'SELECT A.id_paquetes, A.descripcion, C.nombre, B.cantidad FROM almacen.paquetes as A
-    INNER JOIN almacen.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
-    inner JOIN almacen.articulos C on B.articulos_id_articulo = C.id_articulo
+    $consulta = 'SELECT A.id_paquetes, A.descripcion, C.nombre, B.cantidad FROM u300697298_almcn.paquetes as A INNER JOIN u300697298_almcn.articulos_has_paquetes B on A.id_paquetes = B.paquetes_id_paquetes
+    inner JOIN u300697298_almcn.articulos C on B.articulos_id_articulo = C.id_articulo
     WHERE A.id_paquetes ORDER BY A.id_paquetes ASC';
 
     error_log($consulta);
@@ -56,7 +64,7 @@ class almacen{
   }
 
   public static function upSucursal($nomSucursal){
-    $consulta = 'INSERT INTO almacen.sucursal (NomSucursal) VALUES ('.$nomSucursal.');';
+    $consulta = 'INSERT INTO u300697298_almcn.sucursal (NomSucursal) VALUES ('.$nomSucursal.');';
 
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
@@ -65,7 +73,7 @@ class almacen{
   }
 
   public static function upSalidaAlmacen($id_paquete, $id_sucursal){
-    $consulta = 'INSERT INTO almacen.salidaalmacen (fecha) VALUES (CURDATE())';
+    $consulta = 'INSERT INTO u300697298_almcn.salidaalmacen (fecha) VALUES (CURDATE())';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -76,9 +84,9 @@ class almacen{
   }
 
   public static function paquete($descripcion, $id_Articulo, $cantidad){
-    $consulta = 'INSERT INTO almacen.paquetes (descripcion) VALUES ("'.$descripcion.'")';
+    $consulta = 'INSERT INTO u300697298_almcn.paquetes (descripcion) VALUES ("'.$descripcion.'")';
     //error_log(print_r($consulta, true));
-    $check = 'SELECT id_paquetes FROM almacen.paquetes WHERE descripcion = "'.$descripcion.'"';
+    $check = 'SELECT id_paquetes FROM u300697298_almcn.paquetes WHERE descripcion = "'.$descripcion.'"';
     //error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $insert = $PDOMYSQL->consulta($consulta);
@@ -94,9 +102,9 @@ class almacen{
   }
 
   public static function insertArticuloHasPaquete($id_articulo, $id_paquete, $cantidad){
-    $consulta = 'INSERT INTO almacen.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquete.'","'.$cantidad .'" )';
+    $consulta = 'INSERT INTO u300697298_almcn.articulos_has_paquetes (articulos_id_articulo, paquetes_id_paquetes, cantidad) VALUES ("'.$id_articulo.'","'.$id_paquete.'","'.$cantidad .'" )';
     //error_log(print_r($consulta, true));
-    $check = 'SELECT * FROM almacen.articulos_has_paquetes WHERE articulos_id_articulo = "'.$id_articulo.'" and paquetes_id_paquetes = "'.$id_paquete.'" and cantidad ="'.$cantidad.'"';
+    $check = 'SELECT * FROM u300697298_almcn.articulos_has_paquetes WHERE articulos_id_articulo = "'.$id_articulo.'" and paquetes_id_paquetes = "'.$id_paquete.'" and cantidad ="'.$cantidad.'"';
     //error_log(print_r($check, true));
     $PDOMYSQL = new PDOMYSQL;
     $insert = $PDOMYSQL->consulta($consulta);
@@ -108,8 +116,8 @@ class almacen{
   }
 
   public static function existencias($id_articulo, $cantidad, $fecha){
-    $consulta = 'INSERT INTO almacen.existencias (Cont, articulos_id_articulo, fecha) VALUES ("'.$id_articulo.'","'.$id_articulo.'","'.$fecha.'" )';
-    $check = 'SELECT * FROM almace.existencias WHERE articulos_id_articulo = "'.$id_articulo.'"';
+    $consulta = 'INSERT INTO u300697298_almcn.existencias (Cont, articulos_id_articulo, fecha) VALUES ("'.$id_articulo.'","'.$id_articulo.'","'.$fecha.'" )';
+    $check = 'SELECT * FROM u300697298_almcn.existencias WHERE articulos_id_articulo = "'.$id_articulo.'"';
     error_log($consulta);
 
     $PDOMYSQL = new PDOMYSQL;
@@ -117,13 +125,16 @@ class almacen{
   }
 
   public static function upArticulo($nombre, $descripcion, $tamano, $cat_id_cat, $esc_idescala){
-    $consulta = 'INSERT INTO almacen.articulos (nombre, descripcion, tamaño, categorias_id_categorias, escalas_idescalas) VALUES ("'.$nombre.'","'.$descripcion.'","'.$tamano.'","'.$cat_id_cat.'","'.$esc_idescala.'")"';
+    $consulta = "INSERT INTO articulos (nombre, descripcion, tamano, categorias_id_categorias, escalas_idescalas) VALUES (?,?,?,?,?)";
+    $parametros = array($nombre, $descripcion,$tamano, $cat_id_cat,$esc_idescala);
 
-    $check = 'SELECT * FROM almacen.articulos WHERE nombre = "'.$nombre.'" and descripcion = "'.$descripcion.'" and tamaño = "'.$tamano.'" and categorias_id_categorias ="'.$cat_id_cat.'"'."'and escalas_idescalas ='".$esc_idescala.'"';
+
+    $check = "SELECT * FROM articulos WHERE nombre = ? and descripcion = ? and tamano = ? and categorias_id_categorias =? and escalas_idescalas =?";
+
     error_log($check);
     $PDOMYSQL = new PDOMYSQL;
-    $insert = $PDOMYSQL->consulta($consulta);
-    $result = $PDOMYSQL->consulta($check);
+    $insert = $PDOMYSQL->consultaSegura($consulta, $parametros);
+    $result = $PDOMYSQL->consultaSegura($check, $parametros);
     if($result){
       return $result;
     }
@@ -139,7 +150,7 @@ class almacen{
       6=>$articuloscol,
       7=>$cat_id_cat
     );
-    $consulta = ' INSERT INTO almacen.articulos '.
+    $consulta = ' INSERT INTO articulos '.
     '(nombre, '.
     'descripcion, '.
     'unidades, '.
@@ -157,7 +168,7 @@ class almacen{
 
   //FUnciones Privadas
   private static function MaxPaquete(){
-    $consulta = 'select MAX(id_paquetes) from almacen.paquetes';
+    $consulta = 'select MAX(id_paquetes) from u300697298_almcn.paquetes';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -166,7 +177,7 @@ class almacen{
   }
 
   private static function MaxSalidaAlmacen(){
-    $consulta = 'select MAX(idSalidaAlmacen) from almacen.salidaalmacen';
+    $consulta = 'select MAX(idSalidaAlmacen) from u300697298_almcn.salidaalmacen';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -175,7 +186,7 @@ class almacen{
   }
 
   private static function paquetes_has_SalidaAlmacen($id_paquete, $idSalidaAlmacen, $id_sucursal){
-    $consulta = 'INSERT INTO almacen.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
+    $consulta = 'INSERT INTO u300697298_almcn.paquetes_has_salidaalmacen (paquetes_id_paquetes, SalidaAlmacen_idSalidaAlmacen, Sucursal_idSucursal) VALUES ("'.$id_paquete.'","'.$idSalidaAlmacen.'","'.$id_sucursal .'" )';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);

@@ -51,23 +51,25 @@ class PDOMYSQL
 		return $datos;
         }
 
-		//ejecutar consulta salva
-	/*public  function consultaSegura($query, $arreglo){
-		$query = $this->PDO->prepare($query);
-		foreach($arregloas $i => $valor){
-			$query->bindParam($i+1,$valor);
+		public  function consultaSegura($query, $arreglo){
+		$datos=array();
+		try {			
+			$statement  = $this->PDO->prepare($query);
+			$statement->execute($arreglo);	
+			while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+				$datos = array();
+				$datos[] =$row;				
+			}
+		} catch (PDOException $e) {
+			error_log($e);
+			$error="error";
+			$mensaje="ocurrio un problema en la consulta";
+			return false;
+			
 		}
-
-		$query->execute();
-		$datos = array();
-		//for ($i = 0; $row = $query->fetch();$i++){
-		//	$datos[] = $row;
-		//}
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-					$datos[] =$row;
-				}
-        return $datos;
-	}*/
+		
+		return $datos;
+	}
 
 }
 ?>

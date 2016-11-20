@@ -66,16 +66,16 @@ function newUser(){
 function saveNewArticle(){
   $('#saveNewArticle').click(function(e){
     e.preventDefault();
-    $.ajax({
-      data:  {
+    var data = {
       "new_articulo": 1,
       "nombre_articulo": $("#nombre_articulo").val(),
       "descripcion_articulo": $("#descripcion_articulo").val(),
-      "unidades_articulo": $("#unidades_articulo").val(),
       "escala_articulo": $("#escala_articulo").val(),
-      "tamaño_articulo": $("#tamaño_articulo").val(),
+      "tamano_articulo": $("#tamaño_articulo").val(),
       "categoria_articulo": $("#categoria_articulo").val()
-      },
+    };
+    $.ajax({
+      data:  data,
       url: 'classes/articulos.php',
       type: 'post'
     }).done(function(data){
