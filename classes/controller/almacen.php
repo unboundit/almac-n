@@ -3,6 +3,8 @@
 use pdomysql AS pdomysql;
 use almacen AS almacen;
 
+date_default_timezone_set('America/Mexico_City'); // CDT
+
 class almacen{
   public static function getArticulos(){
     $consulta = 'SELECT a.id_articulo,a.nombre,a.descripcion,c.nomEscala,a.tamaño, b.nombre as Categoria from almacen.articulos as a inner join almacen.categorias b on b.id_categorias = a.categorias_id_categorias inner join almacen.escalas c on c.idescalas = a.escalas_idescalas WHERE a.id_articulo ORDER BY a.id_articulo ASC';
@@ -35,7 +37,14 @@ class almacen{
   }
 
   public static function getCategorias(){
-    $consulta = 'SELECT * from almacen.categorias';
+    $consulta = 'SELECT * from '.DB_NAME.'.categorias';
+    error_log($consulta);
+    $PDOMYSQL = new PDOMYSQL;
+    $result =  $PDOMYSQL->consulta($consulta);
+    return $result;
+  }
+  public static function getEscalas(){
+    $consulta = 'SELECT * from '.DB_NAME.'.escalas';
     error_log($consulta);
     $PDOMYSQL = new PDOMYSQL;
     $result =  $PDOMYSQL->consulta($consulta);
@@ -107,7 +116,21 @@ class almacen{
     }
   }
 
-  public static function existencias($id_articulo, $cantidad, $fecha){
+  public static function existencias($existencias){
+    $info = getdate();
+    $date = $info['mday'];
+    $month = $info['mon'];
+    $year = $info['year'];
+    $hour = $info['hours'];
+    $min = $info['minutes'];
+    $sec = $info['seconds'];
+    $fecha = "$date/$month/$year == $hour:$min:$sec";
+    $current_date = date('d/m/Y == H:i:s');
+
+    foreach ($existencias as $articulo) {
+      echo $articulo;
+    }
+
     $consulta = 'INSERT INTO almacen.existencias (Cont, articulos_id_articulo, fecha) VALUES ("'.$id_articulo.'","'.$id_articulo.'","'.$fecha.'" )';
     $check = 'SELECT * FROM almace.existencias WHERE articulos_id_articulo = "'.$id_articulo.'"';
     error_log($consulta);
@@ -184,8 +207,8 @@ class almacen{
   public static function chearExistencas($id_PaquetesArray){
     $query ='';
 
-    for ($i=0; $i < count($id_PaquetesArray); $i++) { 
-      # code...   
+    for ($i=0; $i < count($id_PaquetesArray); $i++) {
+      # code...
     }
   }
 

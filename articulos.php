@@ -134,24 +134,29 @@ if(!isset($_SESSION['user'])){
                 <textarea id="descripcion_articulo" name="descripcion_articulo" required="required" class="form-control col-md-7 col-xs-12" rows="8" cols="40"></textarea>
               </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="unidades_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Unidades</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <input id="unidades_articulo" name="unidades_articulo" class="form-control col-md-7 col-xs-12" type="text">
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="escala_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Escala</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <input id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12" type="text">
+                <select id="escala_articulo" name="escala_articulo" class="form-control col-md-7 col-xs-12">
+                  <?php $categorias = almacen::getEscalas();
+                  foreach ($categorias as $key => $value) { ?>
+                    <option value="<?= $categorias[$key]['idescalas'] ?>"><?= $categorias[$key]['nomEscala'] ?></option>
+                  <?php } ?>
+                </select>
               </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="tamaño_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Tamaño</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <input id="tamaño_articulo" name="tamaño_articulo" class="form-control col-md-7 col-xs-12" type="text">
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="categoria_articulo" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">Categoria</label>
               <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
